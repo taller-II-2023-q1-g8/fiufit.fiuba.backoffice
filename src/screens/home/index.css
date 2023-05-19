@@ -1,0 +1,123 @@
+.Container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../../public/login-cover.png');
+    background-repeat: repeat;
+}
+
+.Nav {
+    width: 100%;
+    height: 60px;
+    background-color: #6666FF;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Email {
+    color: #fff;
+    margin: 20px;
+}
+
+.FiuFitContainer {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+.FiuFitContainer > h1 {
+    font-weight: 1000;
+    color: white;
+    margin: 10px;
+}
+
+.FiuFitContainer > h2 {
+    margin: 10px;
+}
+
+.HomeDataContainer{
+    background-color: #6666FF;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: 800px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    height: fit-content;
+    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.908);
+}
+
+.Menu{
+    margin: 20px;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.OptionContainer{
+    background-color: #ffffff;
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 27%;
+    aspect-ratio: 1/2;
+    border-radius: 20px;
+    /* border: 2px gray solid; */
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.OptionContainer > p {
+    font-weight: 600;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.OptionContainer:hover{
+    background-color: #d8d8ff;
+    transform: scale(1.02);
+    /* box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.416); */
+}
+
+.OptionContainer:hover > p {
+    transform: scale(1.1);
+}
+
+.OptionIcon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    aspect-ratio: 1/1;
+    width: 200px;
+}
+
+.UsersIcon {
+    background-image: url('../../../public/weightlifting.png');
+}
+
+.PlansIcon {
+    background-image: url('../../../public/dumbbell.png');
+}
+
+.AdminsIcon {
+    background-image: url('../../../public/group.png');
+}
+
+@media screen and (max-width: 889px) {
+
+    .HomeDataContainer{
+        width: 90vw;
+    }
+    
+}
