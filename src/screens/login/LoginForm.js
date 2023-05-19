@@ -11,7 +11,7 @@ export function LoginForm() {
 
     const handleSubmit = async () => {
         const userData = (await fetchUserByEmail(email)).message;
-        if (userData.is_admin){
+        if (userData && userData.is_admin){
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => console.info("Signed in"))
                 .catch((error) => console.error(error))

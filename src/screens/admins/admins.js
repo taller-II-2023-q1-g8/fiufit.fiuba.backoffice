@@ -13,7 +13,9 @@ export const AdminsScreen = () => {
     useEffect(() => {
         async function fetchData(){
             const allUsers = (await fetchAllUsers()).message;
-            setAdmins(allUsers.filter((user) => user.is_admin))
+            if (allUsers) {
+                setAdmins(allUsers.filter((user) => user.is_admin))
+            }
         }
         fetchData();
     }, []);
