@@ -1,0 +1,35 @@
+.PlansTable {
+    border-collapse: collapse;
+    font-size: 20px;
+    background-color: #6666FF;
+}
+
+
+.PlansTable > thead > tr > th {
+    padding: 10px;
+    border-left: white solid 1px;
+    width: 150px;
+}
+.PlansTable > tr > th {
+    width: 100px;
+    font-weight: 200;
+}
+
+.PlansTable {
+    font-weight: 300;
+}
+
+.PlansTable > tr:nth-child(even){   
+    background-color: #ffffff;
+}
+.PlansTable >tr:nth-child(odd){   
+    background-color: #eeeeee;
+}
+
+.PlansTable >tr:hover{   
+    background-color: #c5c5ff;
+}
+
+.PlansTable > thead > tr > th {   
+    color: white
+}

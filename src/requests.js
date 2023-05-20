@@ -32,6 +32,12 @@ export const fetchAllUsers = async () => (
   ).then((response) => response.json())
 )
 
+export const fetchAllPlans = async () => (
+  await fetchData(
+    'https://api-gateway-k1nl.onrender.com/plans/'
+  ).then((response) => response.json())
+)
+
 export const registerAdmin = async (data) => (
   await fetch('https://api-gateway-k1nl.onrender.com/user', {
     method: 'PUT',
