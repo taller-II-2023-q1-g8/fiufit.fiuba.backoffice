@@ -1,6 +1,6 @@
 import { TextField } from "../../components/TextField"
 import { useState } from "react"
-import { fetchData, fetchUserByEmail } from "../../requests"
+import { fetchData, fetchAdminByEmail } from "../../requests"
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from "../../config"
 
@@ -10,8 +10,8 @@ export function LoginForm() {
     const [password, setPassword] = useState('')
 
     const handleSubmit = async () => {
-        const userData = (await fetchUserByEmail(email)).message;
-        if (userData && userData.is_admin){
+        const userData = (await fetchAdminByEmail(email)).message;
+        if (userData){
             signInWithEmailAndPassword(auth, email, password)
                 .then(() => console.info("Signed in"))
                 .catch((error) => console.error(error))

@@ -12,9 +12,7 @@ export default function UsersScreen() {
     useEffect(() => {
         async function fetchData(){
             const allUsers = (await fetchAllUsers()).message;
-            if (allUsers) {
-                setUsers(allUsers.filter((user) => !user.is_admin))
-            }
+            setUsers(allUsers)
         }
         fetchData();
     }, []);

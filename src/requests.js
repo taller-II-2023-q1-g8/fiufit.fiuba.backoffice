@@ -10,7 +10,13 @@ const fetchData = async (url) =>
 
 export const fetchUserByEmail = async (email) => (
   await fetchData(
-    `https://api-gateway-k1nl.onrender.com/user/with_email/${email}`
+    `https://api-gateway-k1nl.onrender.com/user?email=/${email}`
+  ).then((response) => response.json())
+)
+
+export const fetchAdminByEmail = async (email) => (
+  await fetchData(
+    `https://api-gateway-k1nl.onrender.com/user/admin/?email=${email}`
   ).then((response) => response.json())
 )
 
@@ -29,6 +35,12 @@ export const fetchUserByUsername = async (username) => (
 export const fetchAllUsers = async () => (
   await fetchData(
     'https://api-gateway-k1nl.onrender.com/user/'
+  ).then((response) => response.json())
+)
+
+export const fetchAllAdmins = async () => (
+  await fetchData(
+    'https://api-gateway-k1nl.onrender.com/user/admin'
   ).then((response) => response.json())
 )
 

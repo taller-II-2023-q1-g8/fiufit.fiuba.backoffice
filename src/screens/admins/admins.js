@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { userContext } from "../../App";
-import { fetchAllUsers } from "../../requests";
+import { fetchAllAdmins } from "../../requests";
 import { UserEntry } from "../users/UserEntry";
 
 
@@ -12,10 +12,8 @@ export const AdminsScreen = () => {
 
     useEffect(() => {
         async function fetchData(){
-            const allUsers = (await fetchAllUsers()).message;
-            if (allUsers) {
-                setAdmins(allUsers.filter((user) => user.is_admin))
-            }
+            const allAdmins = (await fetchAllAdmins()).message;
+            setAdmins(allAdmins)
         }
         fetchData();
     }, []);
