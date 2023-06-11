@@ -8,27 +8,18 @@
     background-repeat: repeat;
 }
 
-.Nav {
-    position: fixed;
-    width: 100vw;
-    height: 60px;
-    background-color: #6666FF;
-    display: flex;
-    align-items: center;
-}
-
-.Email{
+.Email {
     color: #fff;
     margin: 20px;
 }
 
-.HomeDataContainer{
+.HomeDataContainer {
     background-color: #fff;
     margin-top: 100px;
     padding-bottom: 40px;
 }
 
-.FiuFitContainer{
+.FiuFitContainer {
     color: black;
     text-decoration: none;
     border: 2px black soKlid;
@@ -36,39 +27,40 @@
     transition: 0.3s;
 }
 
-.FiuFitContainer:hover{
+.FiuFitContainer:hover {
     background-color: #8d8dff;
 }
 
-.UsersTable{   
+.UsersTable {
     border-collapse: collapse;
     font-size: 20px;
     background-color: #6666FF;
 }
 
-.UsersTable > thead > tr > th {
+.UsersTable>thead>tr>th {
     padding: 10px;
     border-left: white solid 1px;
     width: 100px;
 }
 
-.UsersTable > tr > th {
+.UsersTable>tr>th {
     width: 100px;
     font-weight: 200;
 }
 
-.UsersTable > tr:nth-child(even){   
+.UsersTable>tr:nth-child(even) {
     background-color: #ffffff;
 }
-.UsersTable >tr:nth-child(odd){   
+
+.UsersTable>tr:nth-child(odd) {
     background-color: #eeeeee;
 }
 
-.UsersTable >tr:hover{   
+.UsersTable>tr:hover {
     background-color: #c5c5ff;
 }
 
-.UsersTable > thead > tr > th {   
+.UsersTable>thead>tr>th {
     color: white
 }
 
@@ -82,12 +74,12 @@
     background-color: #c5c5ff;
 }
 
-.UserEntry > * {
+.UserEntry>* {
     padding: 5px;
     border: 2px solid rgb(179, 179, 179);
 }
 
-.UsersTable > th {
+.UsersTable>th {
 
     border: 1px solid black;
 }

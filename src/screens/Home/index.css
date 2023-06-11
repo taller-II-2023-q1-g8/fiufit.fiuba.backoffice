@@ -8,7 +8,7 @@
     background-repeat: repeat;
 }
 
-.Nav {
+.Topbar {
     width: 100%;
     height: 60px;
     background-color: #6666FF;
@@ -22,23 +22,8 @@
     margin: 20px;
 }
 
-.FiuFitContainer {
-    display: flex;
-    align-items: center;
-    width: fit-content;
-}
 
-.FiuFitContainer > h1 {
-    font-weight: 1000;
-    color: white;
-    margin: 10px;
-}
-
-.FiuFitContainer > h2 {
-    margin: 10px;
-}
-
-.HomeDataContainer{
+.HomeDataContainer {
     background-color: #6666FF;
     display: flex;
     justify-content: center;
@@ -52,7 +37,7 @@
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.908);
 }
 
-.Menu{
+.Menu {
     margin: 20px;
     height: fit-content;
     width: 100%;
@@ -62,7 +47,7 @@
     justify-content: space-around;
 }
 
-.OptionContainer{
+.OptionContainer {
     background-color: #ffffff;
     text-decoration: none;
     color: black;
@@ -79,19 +64,19 @@
     transition: 0.2s;
 }
 
-.OptionContainer > p {
+.OptionContainer>p {
     font-weight: 600;
     font-size: 18px;
     transition: 0.2s;
 }
 
-.OptionContainer:hover{
+.OptionContainer:hover {
     background-color: #d8d8ff;
     transform: scale(1.02);
     /* box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.416); */
 }
 
-.OptionContainer:hover > p {
+.OptionContainer:hover>p {
     transform: scale(1.1);
 }
 
@@ -116,8 +101,8 @@
 
 @media screen and (max-width: 889px) {
 
-    .HomeDataContainer{
+    .HomeDataContainer {
         width: 90vw;
     }
-    
+
 }

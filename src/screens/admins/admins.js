@@ -1,14 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
-import { userContext } from "../../App";
+import { useState, useEffect } from "react";
 import { fetchAllAdmins } from "../../requests";
 import { UserEntry } from "../users/UserEntry";
+import { Topbar } from "../../components/Topbar";
 
 
 export const AdminsScreen = () => {
-    const userData = useContext(userContext);
     const [admins, setAdmins] = useState([]);
-
 
     useEffect(() => {
         async function fetchData(){
@@ -20,13 +18,7 @@ export const AdminsScreen = () => {
 
     return (
         <div className="Container">
-            <div className="Nav">
-                <Link className="FiuFitContainer" to="/">
-                    <h1>FiuFit</h1>
-                    <h2>Back Office</h2>
-                </Link>
-                <h2 className="Email">{userData.email}</h2>
-            </div>
+            <Topbar />
             <div className="HomeDataContainer">
                 <h1>Administradores</h1>
                 <Link to="/admins/add">

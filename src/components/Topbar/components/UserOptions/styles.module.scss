@@ -1,0 +1,36 @@
+@import 'src/colors.scss';
+
+.container {
+  align-items: center;
+  display: flex;
+  gap: 5px;
+  margin-right: 10px;
+}
+
+.avatar {
+  align-items: center;
+  background-color: var(--white);
+  border-radius: 50%;
+  color: var(--main);
+  display: flex;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  justify-content: center;
+  text-transform: uppercase;
+  width: 40px;
+}
+
+.arrow {
+  color: var(--white);
+  height: 22px;
+}
+
+.title {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.menuOpened {
+  transform: rotate(180deg);
+}
