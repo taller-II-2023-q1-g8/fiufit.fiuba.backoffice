@@ -1,7 +1,7 @@
 .PlansTable {
     border-collapse: collapse;
     font-size: 20px;
-    background-color: #6666FF;
+    background-color: var(--main);
 }
 
 
