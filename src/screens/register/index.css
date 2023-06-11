@@ -12,7 +12,7 @@
 }
 
 .RegisterFormContainer > div > div > h1 {
-    color: #6666FF;
+    color: var(--main);
     font-weight: 1000;
     padding: 0;
     margin-bottom: 0;
@@ -36,6 +36,6 @@
 
 .OutlineButton {
     background-color: white;
-    border:#6666FF solid 2px;
-    color:#6666FF;
+    border:var(--main) solid 2px;
+    color:var(--main);
 }

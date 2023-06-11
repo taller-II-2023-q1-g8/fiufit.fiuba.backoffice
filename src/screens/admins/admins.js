@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchAllAdmins } from "../../requests";
-import { UserEntry } from "../users/UserEntry";
+import { UserEntry } from "../Users/UsersList/UserEntry";
 import { Topbar } from "../../components/Topbar";
 
 

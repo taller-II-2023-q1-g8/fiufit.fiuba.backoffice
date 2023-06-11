@@ -1,0 +1,21 @@
+
+
+.userDetails {
+    margin-top: 20px;
+}
+
+.userDetailsRow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 20px;
+}
+
+.userDetailsRow label {
+    width: 120px;
+    font-weight: bold;
+}
+
+.userDetailsRow span {
+    flex-grow: 1;
+}

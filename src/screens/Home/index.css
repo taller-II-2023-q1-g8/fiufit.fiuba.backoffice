@@ -11,7 +11,7 @@
 .Topbar {
     width: 100%;
     height: 60px;
-    background-color: #6666FF;
+    background-color: var(--main);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -24,7 +24,7 @@
 
 
 .HomeDataContainer {
-    background-color: #6666FF;
+    background-color: var(--main);
     display: flex;
     justify-content: center;
     flex-direction: column;

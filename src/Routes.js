@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import UsersScreen from "./screens/users";
 import { AdminsScreen } from "./screens/admins/admins";
 import { PlansScreen } from "./screens/plans";
+import { Users } from "./screens/Users";
 import RegisterScreen from "./screens/register";
 import { HomeScreen } from "./screens/Home";
 
@@ -10,11 +10,11 @@ export const ApplicationRoutes = () => {
     <Router>
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/users" element={<UsersScreen />} />
+        <Route path="/users/*" element={<Users />} />
         <Route path="/plans" element={<PlansScreen />} />
         <Route path="/admins" element={<AdminsScreen />} />
         <Route path="/admins/add" element={<RegisterScreen />} />
-        <Route path="*" element={<h1>No Implementado Aún</h1>} />
+        <Route path="*" element={<HomeScreen />} />
       </Routes>
     </Router>
   );
