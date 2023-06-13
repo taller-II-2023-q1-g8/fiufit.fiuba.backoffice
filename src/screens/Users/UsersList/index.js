@@ -13,7 +13,6 @@ export default function UsersList() {
     fetchData();
   }, []);
 
-  console.log({ users });
   return users.length > 0 ? (
     <table className="PlansTable">
       <thead>

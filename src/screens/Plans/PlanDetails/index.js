@@ -8,7 +8,6 @@ const PlanDetails = () => {
   const [planData, setPlanData] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      console.log({ id: params.id });
       const planData = (await fetchPlanById(params.id)).message;
       setPlanData(planData);
     }
@@ -27,8 +26,7 @@ const PlanDetails = () => {
     created_at,
     updated_at,
   } = planData;
-  console.log(planData);
-
+  
   return Object.keys(planData).length > 0 ? (
     <div className={{ alignSelf: "flex-start" }}>
       <table className="PlansTable">

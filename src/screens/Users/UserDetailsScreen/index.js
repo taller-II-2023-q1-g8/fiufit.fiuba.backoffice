@@ -29,8 +29,6 @@ const UserDetailsScreen = () => {
     weight_in_kg,
   } = userData;
 
-  console.log(userData.length);
-  console.log({ userData });
   return Object.keys(userData).length > 0 ? (
     // <div className={styles.userDetails}>
     //   <div className={styles.userDetailsRow}>
