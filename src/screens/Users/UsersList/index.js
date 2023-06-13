@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllUsers } from "../../../requests";
 import { UserEntry } from "./UserEntry";
 import Loader from "../../../components/Loader";
-import styles from "./styles.module.scss";
+
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -15,8 +15,8 @@ export default function UsersList() {
 
   console.log({ users });
   return users.length > 0 ? (
-    <table>
-      <thead className={styles.header}>
+    <table className="PlansTable">
+      <thead>
         <tr>
           <th>Username</th>
           <th>Nombre</th>
@@ -24,14 +24,12 @@ export default function UsersList() {
           <th>Correo</th>
         </tr>
       </thead>
-      <tbody>
-        {users
-          .sort((a, b) => a.username.localeCompare(b.username))
-          .slice(0, 18)
-          .map((user) => (
-            <UserEntry key={user.username} user={user} />
-          ))}
-      </tbody>
+      {users
+        .sort((a, b) => a.username.localeCompare(b.username))
+        .slice(0, 18)
+        .map((user) => (
+          <UserEntry key={user.username} user={user} />
+        ))}
     </table>
   ) : (
     <Loader />

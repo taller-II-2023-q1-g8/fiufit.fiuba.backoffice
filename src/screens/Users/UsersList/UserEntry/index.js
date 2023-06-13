@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./styles.module.scss";
 
 export const UserEntry = ({ user }) => {
   const { username, firstname, lastname, email } = user;
@@ -8,7 +7,14 @@ export const UserEntry = ({ user }) => {
   return (
     <tr>
       <td>
-        <Link className={styles.link} to={`/users/${username}`}>
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "var(--main)",
+            fontWeight: "bold",
+          }}
+          to={`/users/${username}`}
+        >
           {username}
         </Link>
       </td>

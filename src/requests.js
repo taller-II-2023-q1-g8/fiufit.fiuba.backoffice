@@ -1,63 +1,60 @@
-const fetchData = async (url) =>  
+const fetchData = async (url) =>
   fetch(url, {
-    method: 'GET',
+    method: "GET",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-    mode: 'cors'
+    mode: "cors",
   });
 
-export const fetchUserByEmail = async (email) => (
+export const fetchUserByEmail = async (email) =>
   await fetchData(
     `https://api-gateway-k1nl.onrender.com/user?email=/${email}`
-  ).then((response) => response.json())
-)
+  ).then((response) => response.json());
 
-export const fetchAdminByEmail = async (email) => (
+export const fetchAdminByEmail = async (email) =>
   await fetchData(
     `https://api-gateway-k1nl.onrender.com/user/admin/?email=${email}`
-  ).then((response) => response.json())
-)
+  ).then((response) => response.json());
 
-export const fetchAllUsernames = async () => (
-  await fetchData(
-    'https://api-gateway-k1nl.onrender.com/user/usernames'
-  ).then((response) => response.json())
-)
+export const fetchAllUsernames = async () =>
+  await fetchData("https://api-gateway-k1nl.onrender.com/user/usernames").then(
+    (response) => response.json()
+  );
 
-export const fetchUserByUsername = async (username) => (
+export const fetchUserByUsername = async (username) =>
   await fetchData(
     `https://api-gateway-k1nl.onrender.com/user/?username=${username}`
-  ).then((response) => response.json())
-)
+  ).then((response) => response.json());
 
-export const fetchAllUsers = async () => (
-  await fetchData(
-    'https://api-gateway-k1nl.onrender.com/user/'
-  ).then((response) => response.json())
-)
+export const fetchAllUsers = async () =>
+  await fetchData("https://api-gateway-k1nl.onrender.com/user/").then(
+    (response) => response.json()
+  );
 
-export const fetchAllAdmins = async () => (
-  await fetchData(
-    'https://api-gateway-k1nl.onrender.com/user/admin'
-  ).then((response) => response.json())
-)
+export const fetchAllAdmins = async () =>
+  await fetchData("https://api-gateway-k1nl.onrender.com/user/admin").then(
+    (response) => response.json()
+  );
 
-export const fetchAllPlans = async () => (
-  await fetchData(
-    'https://api-gateway-k1nl.onrender.com/plans/'
-  ).then((response) => response.json())
-)
+export const fetchAllPlans = async () =>
+  await fetchData("https://api-gateway-k1nl.onrender.com/plans/").then(
+    (response) => response.json()
+  );
 
-export const registerAdmin = async (data) => (
-  await fetch('https://api-gateway-k1nl.onrender.com/user', {
-    method: 'PUT',
+export const fetchPlanById = async (id) =>
+  await fetchData(`https://api-gateway-k1nl.onrender.com/plans/${id}`).then(
+    (response) => response.json()
+  );
+
+export const registerAdmin = async (data) =>
+  await fetch("https://api-gateway-k1nl.onrender.com/user", {
+    method: "PUT",
     headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json'
+      Accept: "application/json",
+      "Content-Type": "application/json",
     },
-    mode: 'cors',
-    body: JSON.stringify(data)
-  })
-);
+    mode: "cors",
+    body: JSON.stringify(data),
+  });
