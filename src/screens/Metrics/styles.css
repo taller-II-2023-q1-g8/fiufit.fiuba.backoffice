@@ -14,13 +14,14 @@
     }
 
     >tr {
-        &>td {
+        >td {
             text-align: center;
-            padding-top: 10px;
-            padding-bottom: 10px;
-            border-left: white solid 1px;
-            border-top: white solid 1px;
-            border-right: white solid 1px;
+            padding: 4px;
+        }
+
+        >th {
+            width: 100px;
+            font-weight: 200;
         }
 
         &:nth-child(even) {
@@ -31,8 +32,15 @@
             background-color: #eeeeee;
         }
 
+
+
+
         &:hover {
             background-color: #c5c5ff;
         }
     }
+}
+
+.TotalAmount {
+    background-color: var(--main_soft) !important;
 }

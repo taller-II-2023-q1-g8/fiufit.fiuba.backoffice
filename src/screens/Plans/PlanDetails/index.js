@@ -2,6 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import { fetchPlanById } from "../../../requests";
 import { useParams } from "react-router-dom";
 import Loader from "../../../components/Loader";
+import moment from "moment";
 
 const PlanDetails = () => {
   const params = useParams();
@@ -26,31 +27,60 @@ const PlanDetails = () => {
     created_at,
     updated_at,
   } = planData;
-  
+
+  const mapDifficulty = (receivedDifficulty) => {
+    if (receivedDifficulty === "EASY") return "FÁCIL";
+    if (receivedDifficulty === "HARD") return "DIFICIL";
+    return receivedDifficulty;
+  };
+
+  const mapBodyPart = (receivedTags) => {
+    let groupOfTags = ["-"];
+    if (receivedTags.includes(","))
+      groupOfTags = receivedTags.split(",").map((tag) => tag.trim());
+    else groupOfTags = [receivedTags];
+
+    return groupOfTags.map((tag) => {
+      console.log(tag);
+      if (tag === "CHEST") return "PECHO";
+      if (tag === "ARMS") return "BRAZOS";
+      if (tag === "ABS") return "ABDOMEN";
+      if (tag === "LEGS") return "PIERNAS";
+      if (tag === "Back") return "ESPALDA";
+      return tag;
+    });
+  };
+
   return Object.keys(planData).length > 0 ? (
     <div className={{ alignSelf: "flex-start" }}>
       <table className="PlansTable">
         <thead>
           <tr>
             <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Difficulty</th>
-            <th>Trainer ID</th>
+            <th>Título del plan</th>
+            <th>Descripción</th>
+            <th>Dificultad</th>
+            <th>ID del entrenador</th>
             <th>Tags</th>
-            <th>Created At</th>
-            <th>Updated At</th>
+            <th>Fecha de creación</th>
+            <th>Última actualización</th>
           </tr>
         </thead>
         <tr key={id}>
-          <td>{id}</td>
-          <td>{title}</td>
-          <td>{description}</td>
-          <td>{difficulty}</td>
-          <td>{trainer_id}</td>
-          <td>{tags}</td>
-          <td>{created_at}</td>
-          <td>{updated_at}</td>
+          <td>{id || "-"}</td>
+          <td>{title || "-"}</td>
+          <td>{description || "-"}</td>
+          <td>{mapDifficulty(difficulty) || "-"}</td>
+          <td>{trainer_id || "-"}</td>
+          <td>
+            {mapBodyPart(tags).map((tag) => (
+              <>
+                {tag} <br />
+              </>
+            ))}
+          </td>
+          <td>{moment(created_at).format("YYYY-MM-DD HH:mm:ss") || "-"}</td>
+          <td>{moment(updated_at).format("YYYY-MM-DD HH:mm:ss") || "-"}</td>
         </tr>
       </table>
       {exercises.length > 0 && (
@@ -60,19 +90,25 @@ const PlanDetails = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Title</th>
-                <th>Muscles</th>
-                <th>Reps</th>
-                <th>Weight</th>
+                <th>Título</th>
+                <th>Músculos</th>
+                <th>Repeticiones</th>
+                <th>Peso</th>
               </tr>
             </thead>
             {exercises.map((exercise) => (
               <tr key={exercise.id}>
-                <td>{exercise.id}</td>
-                <td>{exercise.title}</td>
-                <td>{exercise.muscles}</td>
-                <td>{exercise.reps}</td>
-                <td>{exercise.weight}</td>
+                <td>{exercise.id || "-"}</td>
+                <td>{exercise.title || "-"}</td>
+                <td>
+                  {mapBodyPart(exercise.muscles).map((tag) => (
+                    <>
+                      {tag} <br />
+                    </>
+                  ))}
+                </td>{" "}
+                <td>{exercise.reps || "-"}</td>
+                <td>{exercise.weight || "-"}</td>
               </tr>
             ))}
           </table>{" "}
@@ -85,7 +121,7 @@ const PlanDetails = () => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>External ID</th>
+                <th>ID Externo</th>
                 <th>Está likeado</th>
                 <th>Calificaciones</th>
                 <th>Puntaje</th>
@@ -93,11 +129,11 @@ const PlanDetails = () => {
             </thead>
             {athletes.map((athlete) => (
               <tr key={athlete.id}>
-                <td>{athlete.id}</td>
-                <td>{athlete.external_id}</td>
+                <td>{athlete.id || "-"}</td>
+                <td>{athlete.external_id || "-"}</td>
                 <td>{athlete.is_liked ? "Sí" : "No"}</td>
-                <td>{athlete.calification}</td>
-                <td>{athlete.calification_score}</td>
+                <td>{athlete.calification || "-"}</td>
+                <td>{athlete.calification_score || "-"}</td>
               </tr>
             ))}
           </table>

@@ -9,6 +9,7 @@ export default function UsersList() {
     async function fetchData() {
       const allUsers = (await fetchAllUsers()).message;
       setUsers(allUsers);
+      console.log({ allUsers });
     }
     fetchData();
   }, []);

@@ -15,6 +15,7 @@ const UserDetailsScreen = () => {
     fetchData();
   }, []);
 
+  console.log({ userData });
   const {
     birth_date,
     email,
@@ -30,52 +31,6 @@ const UserDetailsScreen = () => {
   } = userData;
 
   return Object.keys(userData).length > 0 ? (
-    // <div className={styles.userDetails}>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Username:</label>
-    //     <span>{username}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Email:</label>
-    //     <span>{email}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>First Name:</label>
-    //     <span>{firstname}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Last Name:</label>
-    //     <span>{lastname}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Birth Date:</label>
-    //     <span>{birth_date}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Gender:</label>
-    //     <span>{gender}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Height (cm):</label>
-    //     <span>{height_in_cm}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Weight (kg):</label>
-    //     <span>{weight_in_kg}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Phone Number:</label>
-    //     <span>{phone_number}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Is Admin:</label>
-    //     <span>{is_admin ? "Yes" : "No"}</span>
-    //   </div>
-    //   <div className={styles.userDetailsRow}>
-    //     <label>Is Federated:</label>
-    //     <span>{is_federated ? "Yes" : "No"}</span>
-    //   </div>
-    // </div>
     <div className={{ alignSelf: "flex-start" }}>
       <table className="PlansTable">
         <thead>
@@ -96,7 +51,7 @@ const UserDetailsScreen = () => {
         <thead>
           <tr>
             <th>Cumpleaños</th>
-            <th>Genero</th>
+            <th>Género</th>
             <th>Altura (cm)</th>
             <th>Peso (kg)</th>
             <th>Telefono</th>
