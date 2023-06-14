@@ -1,11 +1,12 @@
 .Container {
-    width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-image: url('../../../public/login-cover.png');
-    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .Topbar {
@@ -56,7 +57,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 27%;
+    width: 20%;
     aspect-ratio: 1/2;
     border-radius: 20px;
     /* border: 2px gray solid; */
@@ -97,6 +98,10 @@
 
 .AdminsIcon {
     background-image: url('../../../public/group.png');
+}
+
+.MetricsIcon {
+    background-image: url('../../../public/metrics.png');
 }
 
 @media screen and (max-width: 889px) {

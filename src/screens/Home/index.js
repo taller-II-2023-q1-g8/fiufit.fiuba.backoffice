@@ -22,6 +22,10 @@ export function HomeScreen() {
             <div className="OptionIcon AdminsIcon" />
             <p>Administradores</p>
           </Link>
+          <Link to="/metrics" className="OptionContainer">
+            <div className="OptionIcon MetricsIcon" />
+            <p>Métricas</p>
+          </Link>
         </div>
       </div>
     </div>
