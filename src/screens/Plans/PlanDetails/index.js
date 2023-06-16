@@ -79,8 +79,8 @@ const PlanDetails = () => {
               </>
             ))}
           </td>
-          <td>{moment(created_at).format("YYYY-MM-DD HH:mm:ss") || "-"}</td>
-          <td>{moment(updated_at).format("YYYY-MM-DD HH:mm:ss") || "-"}</td>
+          <td>{new Date(created_at).toLocaleString() || "-"}</td>
+          <td>{new Date(updated_at).toLocaleString() || "-"}</td>
         </tr>
       </table>
       {exercises.length > 0 && (
