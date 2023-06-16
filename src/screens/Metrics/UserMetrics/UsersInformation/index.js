@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect } from "react";
 import { average } from "./utils";
 import { getAge } from "./utils";
 import { createDoughnutChart } from "../utils";
@@ -30,11 +30,13 @@ const UsersInformationMetrics = ({ usersData }) => {
         genders["other"] = genders["other"] + 1;
     });
 
-  createDoughnutChart(
-    "genderChart",
-    ["Femenino", "Masculino", "Otro"],
-    [genders.female, genders.male, genders.other]
-  );
+  useEffect(() => {
+    createDoughnutChart(
+      "genderChart",
+      ["Femenino", "Masculino", "Otro"],
+      [genders.female, genders.male, genders.other]
+    );
+  }, [genders.female, genders.male, genders.other]);
 
   return (
     <Fragment>
@@ -92,7 +94,6 @@ const UsersInformationMetrics = ({ usersData }) => {
           style={{
             display: "flex",
             placeItems: "center",
-            height: 130,
             gap: 10,
             placeSelf: "flex-start",
           }}
@@ -115,12 +116,9 @@ const UsersInformationMetrics = ({ usersData }) => {
               <td>{genders.other}</td>
             </tr>
           </table>
-          <canvas
-            style={{
-              padding: 10,
-            }}
-            id="genderChart"
-          />
+          <div style={{ height: 120 }}>
+            <canvas id="genderChart" />
+          </div>
         </div>
       </div>
     </Fragment>

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { fetchAllAdmins } from "../../requests";
-import { UserEntry } from "../Users/UsersList/UserEntry";
 import { Topbar } from "../../components/Topbar";
+import { UserEntry } from "./UserEntry";
 
 
 export const AdminsScreen = () => {

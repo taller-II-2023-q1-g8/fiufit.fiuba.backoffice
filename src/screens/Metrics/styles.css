@@ -10,7 +10,7 @@
         border-top: white solid 1px;
         border-right: white solid 1px;
         color: white;
-        width: 150px;
+        width: fit-content;
     }
 
     >tr {
@@ -20,7 +20,7 @@
         }
 
         >th {
-            width: 100px;
+            width: fit-content;
             font-weight: 200;
         }
 
