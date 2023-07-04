@@ -84,19 +84,23 @@ export const VerificationsList = () => {
               </Link>
             </td>
             <td>
-              <button
-                className="yes"
-                onClick={() => verify(verification.trainer_id)}
-              >
-                Vrificar
-              </button>
+              {verification.status !== 2 ? (
+                <button
+                  className="yes"
+                  onClick={() => verify(verification.trainer_id)}
+                >
+                  Vrificar
+                </button>
+              ) : null}
               <span> </span>
-              <button
-                className="no"
-                onClick={() => reject(verification.trainer_id)}
-              >
-                Rechazar
-              </button>
+              {verification.status !== 3 ? (
+                <button
+                  className="no"
+                  onClick={() => reject(verification.trainer_id)}
+                >
+                  Rechazar
+                </button>
+              ) : null}
             </td>
           </tr>
         ))}
