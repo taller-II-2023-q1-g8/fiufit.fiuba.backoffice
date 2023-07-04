@@ -5,6 +5,7 @@ import RegisterScreen from "./screens/register";
 import { HomeScreen } from "./screens/Home";
 import { Plans } from "./screens/Plans";
 import Metrics from "./screens/Metrics";
+import { Verifications } from "./screens/Verifications";
 
 export const ApplicationRoutes = () => {
   return (
@@ -15,6 +16,7 @@ export const ApplicationRoutes = () => {
         <Route path="/metrics" element={<Metrics />} />
         <Route path="/plans/*" element={<Plans />} />
         <Route path="/admins" element={<AdminsScreen />} />
+        <Route path="/verifications" element={<Verifications />} />
         <Route path="/admins/add" element={<RegisterScreen />} />
         <Route path="*" element={<HomeScreen />} />
       </Routes>

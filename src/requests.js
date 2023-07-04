@@ -38,8 +38,13 @@ export const fetchAllAdmins = async () =>
     (response) => response.json()
   );
 
-  export const fetchAllAthletes = async () =>
+export const fetchAllAthletes = async () =>
   await fetchData("https://api-gateway-k1nl.onrender.com/athletes").then(
+    (response) => response.json()
+  );
+
+export const fetchAllVerifications = async () =>
+  await fetchData("https://api-gateway-k1nl.onrender.com/verifications").then(
     (response) => response.json()
   );
 
@@ -52,6 +57,32 @@ export const fetchPlanById = async (id) =>
   await fetchData(`https://api-gateway-k1nl.onrender.com/plans/${id}`).then(
     (response) => response.json()
   );
+
+export const verifyTrainer = async (id) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/verifications/${id}/verify`,
+    {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    }
+  ).then((response) => response.json());
+
+export const rejectTrainer = async (id) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/verifications/${id}/reject`,
+    {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    }
+  ).then((response) => response.json());
 
 export const registerAdmin = async (data) =>
   await fetch("https://api-gateway-k1nl.onrender.com/user", {
