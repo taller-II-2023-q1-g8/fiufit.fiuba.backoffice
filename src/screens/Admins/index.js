@@ -4,11 +4,13 @@ import styles from "./styles.module.scss";
 import AdminsList from "./AdminsList";
 import AdminDetails from "./AdminDetails";
 import AddAdmin from "./AddAdmin";
+import { GoBackButton } from "../../components/GoBackButton";
 
 export const AdminsScreen = () => (
   <div className={styles.pageContainer}>
     <Topbar />
     <div className={styles.container}>
+      <GoBackButton />
       <h1>Administradores</h1>
       <Routes>
         <Route path="/" exact="true" element={<AdminsList />} />
