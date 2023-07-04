@@ -4,16 +4,29 @@ import UsersInformationMetrics from "./UsersInformation";
 import UsersAmountMetrics from "./UsersAmount";
 
 const UserMetrics = ({ athletesData, plansData, usersData }) => {
+  // console.log("estoy en el index general");
+  // console.log({ athletesData, plansData, usersData });
+  const shouldShowUsersAmountMetrics =
+    Array.isArray(usersData) &&
+    Array.isArray(plansData) &&
+    Array.isArray(athletesData);
+
   return (
     <Fragment>
       <h2 style={{ alignSelf: "flex-start" }}>Estadísticas de Usuarios</h2>
-      <UsersAmountMetrics
-        allUsers={usersData}
-        allPlans={plansData}
-        allAthletes={athletesData}
-      />
-      <UsersLogingMetrics usersData={usersData} />
-      <UsersInformationMetrics usersData={usersData} />
+      {shouldShowUsersAmountMetrics && (
+        <UsersAmountMetrics
+          allUsers={usersData}
+          allPlans={plansData}
+          allAthletes={athletesData}
+        />
+      )}
+      {Array.isArray(usersData) && (
+        <Fragment>
+          <UsersLogingMetrics usersData={usersData} />
+          <UsersInformationMetrics usersData={usersData} />
+        </Fragment>
+      )}
     </Fragment>
   );
 };

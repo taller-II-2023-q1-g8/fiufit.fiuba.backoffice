@@ -4,6 +4,7 @@ const fetchData = async (url) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      FiuFitAuth: "fS19vBgm0C6G56qEQJAXc4t_-aILiadH",
     },
     mode: "cors",
   });
@@ -71,6 +72,7 @@ export const verifyTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
       },
       mode: "cors",
     }
@@ -84,6 +86,7 @@ export const rejectTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
       },
       mode: "cors",
     }
@@ -95,6 +98,7 @@ export const registerAdmin = async (data) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
     },
     mode: "cors",
     body: JSON.stringify(data),
