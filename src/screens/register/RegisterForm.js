@@ -1,8 +1,6 @@
 import { TextField } from "../../components/TextField";
 import { useState } from "react";
 import { registerAdmin } from "../../requests";
-import { useNavigate } from "react-router-dom";
-import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export function RegisterForm() {
   const [currentStep, setCurrentStep] = useState(1);
@@ -145,14 +143,10 @@ export function RegisterForm() {
     />,
   ];
 
-  let navigate = useNavigate();
   return (
     <div className="RegisterFormContainer">
       <div className="Title">
         <div>
-          <button className="btn-back" onClick={() => navigate(-1)}>
-            <ArrowBackIcon />
-          </button>
           <h1>
             <a href="/" style={{ color: "#FFFFFF" }}>
               FiuFit

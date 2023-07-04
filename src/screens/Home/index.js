@@ -8,7 +8,7 @@ export function HomeScreen() {
       <Topbar />
       <div className="HomeDataContainer">
         <h1 style={{ color: "white" }}>INICIO</h1>
-        <div class="Menu">
+        <div className="Menu">
           <Link to="/users" className="OptionContainer">
             <div className="OptionIcon UsersIcon" />
             <p>Atletas y Entrenadores</p>
