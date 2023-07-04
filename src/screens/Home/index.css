@@ -57,7 +57,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 20%;
+    width: 15%;
     aspect-ratio: 1/2;
     border-radius: 20px;
     /* border: 2px gray solid; */
@@ -102,6 +102,10 @@
 
 .MetricsIcon {
     background-image: url('../../../public/metrics.png');
+}
+
+.TrainersIcon {
+    background-image: url('../../../public/medal.png');
 }
 
 @media screen and (max-width: 889px) {

@@ -38,11 +38,15 @@ export const fetchAllAdmins = async () =>
     (response) => response.json()
   );
 
-  export const fetchAllAthletes = async () =>
+export const fetchAllAthletes = async () =>
   await fetchData("https://api-gateway-k1nl.onrender.com/athletes").then(
     (response) => response.json()
   );
 
+export const fetchAllTrainersVerifications = async () =>
+  await fetchData(
+    "https://api-gateway-k1nl.onrender.com/trainers" /*-verifications*/
+  ).then((response) => response.json());
 export const fetchAllPlans = async () =>
   await fetchData("https://api-gateway-k1nl.onrender.com/plans/").then(
     (response) => response.json()
@@ -53,6 +57,25 @@ export const fetchPlanById = async (id) =>
     (response) => response.json()
   );
 
+export const verifyTrainer = async (id) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/trainers/${id}/verify`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+  });
+
+export const rejectTrainer = async (id) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/trainers/${id}/reject`, {
+    method: "PATCH",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    mode: "cors",
+  });
 export const registerAdmin = async (data) =>
   await fetch("https://api-gateway-k1nl.onrender.com/user", {
     method: "PUT",
