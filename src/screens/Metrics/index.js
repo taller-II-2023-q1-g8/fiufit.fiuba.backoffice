@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { Topbar } from "../../components/Topbar";
-import "./styles.css";
+import styles from "./styles.module.scss";
 import {
   fetchAllAdmins,
   fetchAllAthletes,
@@ -10,6 +10,7 @@ import {
 import UserMetrics from "./UserMetrics";
 import Loader from "../../components/Loader";
 import AdminMetrics from "./AdminMetrics";
+import { GoBackButton } from "../../components/GoBackButton";
 
 const Metrics = () => {
   const [loading, setLoading] = useState(true);
@@ -36,9 +37,10 @@ const Metrics = () => {
 
   return (
     <div>
-      <div className="Container">
+      <div className={styles.pageContainer}>
         <Topbar />
-        <div className="HomeDataContainer">
+        <div className={styles.container}>
+          <GoBackButton />
           <h1>Métricas</h1>
           {loading ? (
             <Loader />

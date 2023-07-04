@@ -2,6 +2,7 @@ import React, { Fragment, useEffect } from "react";
 import { average } from "./utils";
 import { getAge } from "./utils";
 import { createDoughnutChart } from "../utils";
+import styles from "./styles.module.scss";
 
 const UsersInformationMetrics = ({ usersData }) => {
   const ages = usersData
@@ -24,10 +25,9 @@ const UsersInformationMetrics = ({ usersData }) => {
   usersData
     .map((user) => user.gender)
     .forEach((gender) => {
-      if (gender === "female") genders["female"] = genders["female"] + 1;
-      if (gender === "male") genders["male"] = genders["male"] + 1;
-      if (gender === "other" || gender === "")
-        genders["other"] = genders["other"] + 1;
+      if (gender === "female") genders["female"] += 1;
+      if (gender === "male") genders["male"] += 1;
+      if (gender === "other" || gender === "") genders["other"] += 1;
     });
 
   useEffect(() => {
@@ -41,82 +41,62 @@ const UsersInformationMetrics = ({ usersData }) => {
   return (
     <Fragment>
       <h3 style={{ alignSelf: "flex-start" }}>Información de usuarios</h3>
-      <div style={{ display: "flex", gap: 50 }}>
-        <div
-          style={{
-            display: "flex",
-            placeItems: "center",
-            placeSelf: "flex-start",
-          }}
-        >
-          <table className="PlansTable">
+      <div
+        style={{
+          display: "flex",
+          gap: 50,
+          "flex-wrap": "wrap",
+          "justify-content": "space-around",
+        }}
+      >
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
-              <th>Edad</th>
-              <th> </th>
+              <tr>
+                <th> </th>
+                <th>Promedio</th>
+                <th>Mínima</th>
+                <th>Máxima</th>
+              </tr>
             </thead>
             <tr>
-              <td>Promedio</td>
+              <td>Edad</td>
               <td>{averageAge}</td>
-            </tr>
-            <tr>
-              <td>Mínimo</td>
               <td>{minAge}</td>
-            </tr>
-            <tr>
-              <td>Máximo</td>
               <td>{maxAge}</td>
             </tr>
           </table>
         </div>
-        <div
-          style={{
-            display: "flex",
-            placeItems: "center",
-            placeSelf: "flex-start",
-          }}
-        >
-          <table className="PlansTable">
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
-              <th>Contextura</th>
-              <th> </th>
+              <tr>
+                <th>Altura promedio (cm)</th>
+                <th>Peso promedio (kg)</th>
+              </tr>
             </thead>
             <tr>
-              <td>Altura promedio (cm)</td>
               <td>{averageHeight}</td>
-            </tr>
-            <tr>
-              <td>Peso promedio (kg)</td>
               <td>{averageWeight}</td>
             </tr>
           </table>
         </div>
-        <div
-          style={{
-            display: "flex",
-            placeItems: "center",
-            gap: 10,
-            placeSelf: "flex-start",
-          }}
-        >
-          <table className="PlansTable">
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
             <thead>
-              <th>Género</th>
-              <th></th>
+              <tr>
+                <th>Femenino</th>
+                <th>Masculino</th>
+                <th>Otro</th>
+              </tr>
             </thead>
             <tr>
-              <td>Femenino</td>
               <td>{genders.female}</td>
-            </tr>
-            <tr>
-              <td>Masculino</td>
               <td>{genders.male}</td>
-            </tr>
-            <tr>
-              <td>Otro</td>
               <td>{genders.other}</td>
             </tr>
           </table>
-          <div style={{ height: 120 }}>
+          <div className={styles.canvas}>
             <canvas id="genderChart" />
           </div>
         </div>
