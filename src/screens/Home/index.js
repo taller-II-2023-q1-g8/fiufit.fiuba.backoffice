@@ -20,6 +20,10 @@ export function HomeScreen() {
           <div className={`${styles.icon} ${styles.adminsIcon}`} />
           <p>Administradores</p>
         </Link>
+        <Link to="/verifications" className={styles.optionContainer}>
+          <div className={`${styles.icon} ${styles.verificationsIcon}`} />
+          <p>Centro de Verificacion</p>
+        </Link>
         <Link to="/metrics" className={styles.optionContainer}>
           <div className={`${styles.icon} ${styles.metricsIcon}`} />
           <p>Métricas</p>
