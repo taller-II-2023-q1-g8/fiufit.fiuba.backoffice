@@ -18,6 +18,11 @@ export const fetchAdminByEmail = async (email) =>
     `https://api-gateway-k1nl.onrender.com/user/admin/?email=${email}`
   ).then((response) => response.json());
 
+export const fetchAdminByUsername = async (username) =>
+  await fetchData(
+    `https://api-gateway-k1nl.onrender.com/user/admin/?username=${username}`
+  ).then((response) => response.json());
+
 export const fetchAllUsernames = async () =>
   await fetchData("https://api-gateway-k1nl.onrender.com/user/usernames").then(
     (response) => response.json()

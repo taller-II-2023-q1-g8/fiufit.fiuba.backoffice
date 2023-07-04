@@ -1,31 +1,15 @@
-.Container {
+.pageContainer {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url('../../../public/login-cover.png');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../../public/login-cover.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.Topbar {
-    width: 100%;
-    height: 60px;
-    background-color: var(--main);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.Email {
-    color: #fff;
-    margin: 20px;
-}
-
-
-.HomeDataContainer {
-    background-color: var(--white);
+.container {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -34,26 +18,27 @@
     border-radius: 10px;
     padding: 20px;
     margin-top: 20px;
-    height: fit-content;
-    box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.908);
-
-    &>h1 {
-        margin-top: 0px;
-    }
+    height: 80vh;
 }
 
-.Menu {
+.options {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    min-width: 800px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    height: 75vh;
     margin: 20px;
-    height: fit-content;
-    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-around;
+    grid-gap: 30px;
 }
 
-.OptionContainer {
-    background-color: #ffffff;
+.optionContainer {
+    background-color: var(--main);
     text-decoration: none;
     color: black;
     padding: 20px;
@@ -61,55 +46,57 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 15%;
     aspect-ratio: 1/2;
     border-radius: 20px;
-    /* border: 2px gray solid; */
     cursor: pointer;
+    width: 270px;
     transition: 0.2s;
+
+    &:hover {
+        background-color: var(--main_soft);
+        transform: scale(1.02);
+
+        &>p {
+            transform: scale(1.1);
+        }
+    }
+
+    &>p {
+        font-weight: 600;
+        font-size: 25px;
+        word-break: break-word;
+        text-align: center;
+        transition: 0.2s;
+        color: white;
+    }
 }
 
-.OptionContainer>p {
-    font-weight: 600;
-    font-size: 18px;
-    transition: 0.2s;
-}
-
-.OptionContainer:hover {
-    background-color: #d8d8ff;
-    transform: scale(1.02);
-    /* box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.416); */
-}
-
-.OptionContainer:hover>p {
-    transform: scale(1.1);
-}
-
-.OptionIcon {
+.icon {
     background-repeat: no-repeat;
     background-size: contain;
     aspect-ratio: 1/1;
     width: 200px;
+    filter: invert(100%) brightness(100%);
 }
 
-.UsersIcon {
+.usersIcon {
     background-image: url('../../../public/weightlifting.png');
 }
 
-.PlansIcon {
+.plansIcon {
     background-image: url('../../../public/dumbbell.png');
 }
 
-.AdminsIcon {
+.adminsIcon {
     background-image: url('../../../public/group.png');
 }
 
-.MetricsIcon {
-    background-image: url('../../../public/metrics.png');
+.verificationsIcon {
+    background-image: url('../../../public/medal.png');
 }
 
-.VerificationsIcon {
-    background-image: url('../../../public/medal.png');
+.metricsIcon {
+    background-image: url('../../../public/metrics.png');
 }
 
 @media screen and (max-width: 889px) {

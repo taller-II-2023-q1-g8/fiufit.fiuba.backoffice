@@ -11,7 +11,7 @@ const UsersLogingMetrics = ({ usersData }) => {
 
     const diff = today - dateToCalculate;
     const dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
-    console.log({ dayDiff });
+
     return dayDiff <= 1;
   };
 
@@ -87,7 +87,7 @@ const UsersLogingMetrics = ({ usersData }) => {
           </tr>
         </table>
         <div style={{ height: 120 }}>
-          <canvas  id="KindOfLoginChart" />
+          <canvas id="KindOfLoginChart" />
         </div>
       </div>
     </Fragment>

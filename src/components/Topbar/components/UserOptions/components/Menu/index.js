@@ -19,11 +19,11 @@ const Menu = ({ anchor, onClose }) => {
     placeContent: "flex-end",
     width: "100%",
   };
-  const paperStyle = { backgroundColor: "var(--main)" };
+  const paperStyle = { backgroundColor: "var(--white)" };
   const menuItemStyle = {
     marginRight: "10px",
     gap: "10px",
-    color: "var(--white)",
+    color: "var(--main)",
   };
 
   return (

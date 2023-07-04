@@ -1,21 +1,21 @@
 import { Route, Routes } from "react-router-dom";
-import UserDetailsScreen from "./UserDetailsScreen";
+import UserDetails from "./UserDetails";
 import UsersList from "./UsersList";
 import { Topbar } from "../../components/Topbar";
-import "./styles.css";
+import styles from "./styles.module.scss";
+import { GoBackButton } from "../../components/GoBackButton";
 
 export const Users = () => {
   return (
-    <div>
-      <div className="Container">
-        <Topbar />
-        <div className="HomeDataContainer">
-          <h1>Atletas y Entrenadores</h1>
-          <Routes>
-            <Route path="/" exact="true" element={<UsersList />} />
-            <Route path="/:username" element={<UserDetailsScreen />} />
-          </Routes>
-        </div>
+    <div className={styles.pageContainer}>
+      <Topbar />
+      <div className={styles.container}>
+        <GoBackButton />
+        <h1>Atletas y Entrenadores</h1>
+        <Routes>
+          <Route path="/" exact="true" element={<UsersList />} />
+          <Route path="/:username" element={<UserDetails />} />
+        </Routes>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { fetchAllUsers } from "../../../requests";
 import { UserEntry } from "./UserEntry";
 import Loader from "../../../components/Loader";
+import styles from "./styles.module.scss";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
@@ -9,13 +10,12 @@ export default function UsersList() {
     async function fetchData() {
       const allUsers = (await fetchAllUsers()).message;
       setUsers(allUsers);
-      console.log({ allUsers });
     }
     fetchData();
   }, []);
 
   return users.length > 0 ? (
-    <table className="PlansTable">
+    <table className={styles.table}>
       <thead>
         <tr>
           <th>Username</th>

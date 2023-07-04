@@ -4,7 +4,7 @@ import { fetchUserByUsername } from "../../../requests";
 import { useParams } from "react-router-dom";
 import Loader from "../../../components/Loader";
 
-const UserDetailsScreen = () => {
+const UserDetails = () => {
   const params = useParams();
   const [userData, setUserData] = useState([]);
   useEffect(() => {
@@ -15,7 +15,6 @@ const UserDetailsScreen = () => {
     fetchData();
   }, []);
 
-  console.log({ userData });
   const {
     birth_date,
     email,
@@ -32,7 +31,7 @@ const UserDetailsScreen = () => {
 
   return Object.keys(userData).length > 0 ? (
     <div className={{ alignSelf: "flex-start" }}>
-      <table className="PlansTable">
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Username</th>
@@ -47,7 +46,7 @@ const UserDetailsScreen = () => {
         </tr>
       </table>
       <h3>Información adicional</h3>
-      <table className="PlansTable">
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>Cumpleaños</th>
@@ -75,4 +74,4 @@ const UserDetailsScreen = () => {
   );
 };
 
-export default UserDetailsScreen;
+export default UserDetails;

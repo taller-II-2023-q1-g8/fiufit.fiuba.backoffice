@@ -1,8 +1,9 @@
-import { TextField } from "../../components/TextField";
 import { useState } from "react";
-import { registerAdmin } from "../../requests";
+import { TextField } from "../../../components/TextField";
+import { registerAdmin } from "../../../requests";
+import styles from "./styles.module.scss";
 
-export function RegisterForm() {
+export default function AddAdmin() {
   const [currentStep, setCurrentStep] = useState(1);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState("");
@@ -144,32 +145,19 @@ export function RegisterForm() {
   ];
 
   return (
-    <div className="RegisterFormContainer">
-      <div className="Title">
-        <div>
-          <h1>
-            <a href="/" style={{ color: "#FFFFFF" }}>
-              FiuFit
-            </a>
-          </h1>
-          <h2>Back Office</h2>
-        </div>
-        <h2>Registrar nuevo Administrador</h2>
-      </div>
-      <div className="LoginForm">
-        {currentStep === 1 && fields1}
-        {currentStep === 2 && fields2}
-        {currentStep === 3 && fields3}
-        <div className="ButtonContainer">
-          {currentStep > 1 && (
-            <button className="SubmitButton OutlineButton" onClick={prevStep}>
-              Anterior
-            </button>
-          )}
-          <button className="SubmitButton" onClick={nextStep}>
-            {currentStep === 3 ? "Terminar!" : "Siguiente"}
+    <div className={styles.container}>
+      {currentStep === 1 && fields1}
+      {currentStep === 2 && fields2}
+      {currentStep === 3 && fields3}
+      <div className={styles.buttonsContainer}>
+        {currentStep > 1 && (
+          <button className={styles.button} onClick={prevStep}>
+            Anterior
           </button>
-        </div>
+        )}
+        <button className={styles.button} onClick={nextStep}>
+          {currentStep === 3 ? "Terminar!" : "Siguiente"}
+        </button>
       </div>
     </div>
   );
