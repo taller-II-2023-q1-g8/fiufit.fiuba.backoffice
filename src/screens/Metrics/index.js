@@ -20,14 +20,14 @@ const Metrics = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const allUsers = (await fetchAllUsers()).message;
-      setUsersData(allUsers);
-      const allPlans = (await fetchAllPlans()).message;
+      const allUsers = await fetchAllUsers();
+      setUsersData(allUsers.message);
+      const allPlans = await fetchAllPlans();
       setPlansData(allPlans);
-      const allAthletes = (await fetchAllAthletes()).message;
+      const allAthletes = await fetchAllAthletes();
       setAthletesData(allAthletes);
-      const allAdmins = (await fetchAllAdmins()).message;
-      setAdminsData(allAdmins);
+      const allAdmins = await fetchAllAdmins();
+      setAdminsData(allAdmins.message);
 
       setLoading(false);
     }

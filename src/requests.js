@@ -4,7 +4,7 @@ const fetchData = async (url) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+      FiuFitAuth: "fS19vBgm0C6G56qEQJAXc4t_-aILiadH",
     },
     mode: "cors",
   });
