@@ -19,7 +19,7 @@ export const createDoughnutChart = (chartId, labels, data) => {
       datasets: [
         {
           data: data,
-          backgroundColor: ["brown", "orange", "blue"],
+          backgroundColor: ["#0c007a", "#c90404", "#FF8A0D", ],
         },
       ],
     },

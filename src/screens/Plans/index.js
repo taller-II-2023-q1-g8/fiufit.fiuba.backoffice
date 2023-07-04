@@ -1,14 +1,14 @@
-import "./index.css";
-import { Topbar } from "../../components/Topbar";
-import { Route, Routes } from "react-router-dom";
 import { PlansList } from "./PlansList";
+import { Route, Routes } from "react-router-dom";
+import { Topbar } from "../../components/Topbar";
 import PlanDetails from "./PlanDetails";
+import styles from "./styles.module.scss";
 
 export const Plans = () => {
   return (
-    <div className="Container">
+    <div className={styles.pageContainer}>
       <Topbar />
-      <div className="HomeDataContainer">
+      <div className={styles.container}>
         <h1>Planes de Entrenamiento</h1>
         <Routes>
           <Route path="/" exact="true" element={<PlansList />} />

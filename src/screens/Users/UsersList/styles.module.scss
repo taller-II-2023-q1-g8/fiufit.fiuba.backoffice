@@ -1,8 +1,9 @@
-.PlansTable {
+.table {
     border-collapse: collapse;
     font-size: 20px;
-    background-color: var(--main);
+    background-color: var(--secondary);
     font-weight: 300;
+    border-radius: 10px;
 
     >thead>tr>th {
         padding: 10px;
@@ -10,13 +11,17 @@
         border-top: white solid 1px;
         border-right: white solid 1px;
         color: white;
-        width: 150px;
     }
 
     >tr {
+        background-color: white;
+        min-width: 150px;
+        max-width: 160px;
+
         >td {
             text-align: center;
-            padding: 4px;
+            padding: 4px 20px;
+            border: rgb(255, 223, 178) solid 1px;
         }
 
         >th {
@@ -24,16 +29,8 @@
             font-weight: 200;
         }
 
-        &:nth-child(even) {
-            background-color: #ffffff;
-        }
-
-        &:nth-child(odd) {
-            background-color: #eeeeee;
-        }
-
         &:hover {
-            background-color: #c5c5ff;
+            background-color: rgb(255, 219, 171);
         }
     }
 }

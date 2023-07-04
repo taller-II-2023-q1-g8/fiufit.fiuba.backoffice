@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const UserEntry = ({ user }) => {
-  console.log({ user });
-  const { username, firstname, lastname, email } = user;
+export const AdminEntry = ({ admin }) => {
+  const { username, firstname, lastname, email } = admin;
 
   return (
     <tr>
@@ -11,10 +10,10 @@ export const UserEntry = ({ user }) => {
         <Link
           style={{
             textDecoration: "none",
-            color: "var(--black)",
+            color: "var(--main)",
             fontWeight: "bold",
           }}
-          to={`/users/${username}`}
+          to={`/admins/${username}`}
         >
           {username}
         </Link>

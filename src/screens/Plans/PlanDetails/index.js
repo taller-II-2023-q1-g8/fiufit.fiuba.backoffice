@@ -1,8 +1,8 @@
-import React, { useEffect, useState, Fragment } from "react";
 import { fetchPlanById } from "../../../requests";
 import { useParams } from "react-router-dom";
 import Loader from "../../../components/Loader";
-import moment from "moment";
+import React, { useEffect, useState, Fragment } from "react";
+import styles from "./styles.module.scss";
 
 const PlanDetails = () => {
   const params = useParams();
@@ -41,7 +41,6 @@ const PlanDetails = () => {
     else groupOfTags = [receivedTags];
 
     return groupOfTags.map((tag) => {
-      console.log(tag);
       if (tag === "CHEST") return "PECHO";
       if (tag === "ARMS") return "BRAZOS";
       if (tag === "ABS") return "ABDOMEN";
@@ -53,7 +52,7 @@ const PlanDetails = () => {
 
   return Object.keys(planData).length > 0 ? (
     <div className={{ alignSelf: "flex-start" }}>
-      <table className="PlansTable">
+      <table className={styles.table}>
         <thead>
           <tr>
             <th>ID</th>
@@ -86,7 +85,7 @@ const PlanDetails = () => {
       {exercises.length > 0 && (
         <Fragment>
           <h3>EJERCICIOS</h3>
-          <table className="PlansTable">
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -117,7 +116,7 @@ const PlanDetails = () => {
       {athletes.length > 0 && (
         <Fragment>
           <h3>ATLETAS</h3>
-          <table className="PlansTable">
+          <table className={styles.table}>
             <thead>
               <tr>
                 <th>ID</th>

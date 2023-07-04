@@ -9,9 +9,9 @@
 
 .avatar {
   align-items: center;
-  background-color: var(--white);
+  background-color: var(--main);
   border-radius: 50%;
-  color: var(--main);
+  color: var(--white);
   display: flex;
   font-size: 20px;
   font-weight: 500;
@@ -22,12 +22,12 @@
 }
 
 .arrow {
-  color: var(--white);
+  color: var(--main);
   height: 22px;
 }
 
 .title {
-  color: var(--white);
+  color: var(--main);
   font-weight: 500;
 }
 
