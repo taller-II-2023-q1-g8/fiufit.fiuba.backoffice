@@ -1,19 +1,45 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "./styles.module.scss";
-import { fetchUserByUsername } from "../../../requests";
+import {
+  fetchUserByUsername,
+  fetchBlockedStatusByUsername,
+  blockUser,
+  fetchAdminByUsername,
+  fetchAdminByEmail,
+  unblockUser,
+} from "../../../requests";
 import { useParams } from "react-router-dom";
+import { userContext } from "../../../App";
 import Loader from "../../../components/Loader";
 
 const UserDetails = () => {
   const params = useParams();
+  const adminContext = useContext(userContext);
   const [userData, setUserData] = useState([]);
+  const [blockedData, setBlockedData] = useState([]);
   useEffect(() => {
     async function fetchData() {
       const userData = (await fetchUserByUsername(params.username)).message;
       setUserData(userData);
     }
+    async function fetchBlockedData() {
+      const blockedData = (await fetchBlockedStatusByUsername(params.username))
+        .message;
+      setBlockedData(blockedData);
+    }
     fetchData();
+    fetchBlockedData();
   }, []);
+
+  const handleBlockUser = async () => {
+    const adminUsername = (await fetchAdminByEmail(adminContext.email)).message
+      .username;
+    blockUser(params.username, adminUsername).then(() => {window.location.reload()});
+  };
+
+  const handleUnblockUser = async () => {
+    unblockUser(params.username).then(() => {window.location.reload()});
+  };
 
   const {
     birth_date,
@@ -68,6 +94,26 @@ const UserDetails = () => {
           <td>{is_federated ? "Sí" : "No"}</td>
         </tr>
       </table>
+      <h3>Bloqueo de Usuario</h3>
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Estado</th>
+            <th>Administrador</th>
+            <th>Fecha</th>
+          </tr>
+        </thead>
+        <tr>
+          <td>{blockedData.blocked ? "Bloqueado" : "Desbloqueado"}</td>
+          <td>{blockedData.blocked ? blockedData.blocked_by : "-"}</td>
+          <td>{blockedData.blocked ? blockedData.when : "-"}</td>
+        </tr>
+      </table>
+      {blockedData.blocked ? (
+        <button className={styles.unblockButton} onClick={handleUnblockUser}>Desbloquear</button>
+      ) : (
+        <button className={styles.blockButton} onClick={handleBlockUser}>Bloquear</button>
+      )}
     </div>
   ) : (
     <Loader />

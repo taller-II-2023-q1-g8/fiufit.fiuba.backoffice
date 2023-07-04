@@ -4,6 +4,7 @@ const fetchData = async (url) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
     },
     mode: "cors",
   });
@@ -31,6 +32,11 @@ export const fetchAllUsernames = async () =>
 export const fetchUserByUsername = async (username) =>
   await fetchData(
     `https://api-gateway-k1nl.onrender.com/user/?username=${username}`
+  ).then((response) => response.json());
+
+export const fetchBlockedStatusByUsername = async (username) =>
+  await fetchData(
+    `https://api-gateway-k1nl.onrender.com/user/blocked/${username}`
   ).then((response) => response.json());
 
 export const fetchAllUsers = async () =>
@@ -71,6 +77,7 @@ export const verifyTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
       },
       mode: "cors",
     }
@@ -84,6 +91,7 @@ export const rejectTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
+        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
       },
       mode: "cors",
     }
@@ -95,7 +103,30 @@ export const registerAdmin = async (data) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
+      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
     },
     mode: "cors",
     body: JSON.stringify(data),
+  });
+
+export const blockUser = async (userToBlock, adminUsername) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/user/block/${userToBlock}/${adminUsername}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+    },
+    mode: "cors",
+  });
+
+  export const unblockUser = async (userToUnblock) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/user/unblock/${userToUnblock}`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+    },
+    mode: "cors",
   });

@@ -26,7 +26,7 @@ export default function UsersList() {
       </thead>
       {users
         .sort((a, b) => a.username.localeCompare(b.username))
-        .slice(0, 18)
+        // .slice(0, 18)
         .map((user) => (
           <UserEntry key={user.username} user={user} />
         ))}
