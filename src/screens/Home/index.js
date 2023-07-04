@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Topbar } from "../../components/Topbar";
 
 export function HomeScreen() {
-
   return (
     <div className="Container">
       <Topbar />
@@ -21,6 +20,10 @@ export function HomeScreen() {
           <Link to="/admins" className="OptionContainer">
             <div className="OptionIcon AdminsIcon" />
             <p>Administradores</p>
+          </Link>
+          <Link to="/verifications" className="OptionContainer">
+            <div className="OptionIcon VerificationsIcon" />
+            <p>Centro de Verificacion</p>
           </Link>
           <Link to="/metrics" className="OptionContainer">
             <div className="OptionIcon MetricsIcon" />
