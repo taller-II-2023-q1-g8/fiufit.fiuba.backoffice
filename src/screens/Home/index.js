@@ -21,9 +21,9 @@ export function HomeScreen() {
             <div className="OptionIcon AdminsIcon" />
             <p>Administradores</p>
           </Link>
-          <Link to="/trainers" className="OptionContainer">
-            <div className="OptionIcon TrainersIcon" />
-            <p>Trainers</p>
+          <Link to="/verifications" className="OptionContainer">
+            <div className="OptionIcon VerificationsIcon" />
+            <p>Centro de Verificacion</p>
           </Link>
           <Link to="/metrics" className="OptionContainer">
             <div className="OptionIcon MetricsIcon" />

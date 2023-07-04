@@ -1,4 +1,4 @@
-.TrainersTable {
+.VerificationsTable {
     border-collapse: collapse;
     font-size: 20px;
     background-color: var(--main);
@@ -13,7 +13,7 @@
         width: 150px;
     }
 
-    >tr {
+    >tbody>tr {
         &>td {
             text-align: center;
             padding-top: 10px;
