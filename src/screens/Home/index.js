@@ -7,7 +7,7 @@ export function HomeScreen() {
   return (
     <div className={styles.pageContainer}>
       <Topbar />
-      <div class={styles.options}>
+      <div className={styles.options}>
         <Link to="/users" className={styles.optionContainer}>
           <div className={`${styles.icon} ${styles.usersIcon}`} />
           <p>Atletas y Entrenadores</p>
