@@ -11,7 +11,7 @@ const fetchData = async (url) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: "fS19vBgm0C6G56qEQJAXc4t_-aILiadH",
+      "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
     },
     mode: "cors",
   });
@@ -76,6 +76,11 @@ export const fetchPlanById = async (id) =>
     (response) => response.json()
   );
 
+export const fetchAllServices = async () =>
+  await fetchData(`https://api-gateway-k1nl.onrender.com/services/list`).then(
+    (response) => response.json()
+  );
+
 export const verifyTrainer = async (id) =>
   await fetch(
     `https://api-gateway-k1nl.onrender.com/verifications/${id}/verify`,
@@ -127,9 +132,23 @@ export const blockUser = async (userToBlock, adminUsername) =>
     mode: "cors",
   });
 
-  export const unblockUser = async (userToUnblock) =>
-  await fetch(`https://api-gateway-k1nl.onrender.com/user/unblock/${userToUnblock}`, {
-    method: "POST",
+export const unblockUser = async (userToUnblock) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/user/unblock/${userToUnblock}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+      },
+      mode: "cors",
+    }
+  );
+
+export const blockService = async (name) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/services/block/${name}`, {
+    method: "PUT",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
@@ -137,3 +156,17 @@ export const blockUser = async (userToBlock, adminUsername) =>
     },
     mode: "cors",
   });
+
+export const unblockService = async (name) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/services/activate/${name}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+      },
+      mode: "cors",
+    }
+  );

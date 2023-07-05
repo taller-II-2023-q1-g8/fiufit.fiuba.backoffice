@@ -1,14 +1,16 @@
-import "./index.css";
-import { Topbar } from "../../components/Topbar";
 import { Route, Routes } from "react-router-dom";
+import { Topbar } from "../../components/Topbar";
+import styles from "./styles.module.scss";
+import { GoBackButton } from "../../components/GoBackButton";
 import { VerificationsList } from "./VerificationsList";
 
 export const Verifications = () => {
   return (
-    <div className="Container">
+    <div className={styles.pageContainer}>
       <Topbar />
-      <div className="HomeDataContainer">
-        <h1>Centro de Verificacion</h1>
+      <div className={styles.container}>
+        <GoBackButton />
+        <h1>Centro de Verificación</h1>
         <Routes>
           <Route path="/" exact="true" element={<VerificationsList />} />
         </Routes>

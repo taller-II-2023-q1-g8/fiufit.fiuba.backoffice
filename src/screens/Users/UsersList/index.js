@@ -8,8 +8,13 @@ export default function UsersList() {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const allUsers = (await fetchAllUsers()).message;
-      setUsers(allUsers);
+      try {
+        const allUsers = await fetchAllUsers();
+        setUsers(allUsers.message);
+      } catch (error) {
+        console.log({ error });
+        window.location.href = "/";
+      }
     }
     fetchData();
   }, []);

@@ -9,8 +9,13 @@ export const PlansList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const allPlans = (await fetchAllPlans()).message;
-      if (allPlans) setPlans(allPlans);
+      try {
+        const allPlans = await fetchAllPlans();
+        if (allPlans) setPlans(allPlans);
+      } catch (error) {
+        console.log({ error });
+        window.location.href = "/";
+      }
     }
     fetchData();
   }, []);

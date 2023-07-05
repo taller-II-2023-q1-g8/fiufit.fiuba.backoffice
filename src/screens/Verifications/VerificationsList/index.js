@@ -6,13 +6,15 @@ import {
   verifyTrainer,
 } from "../../../requests";
 import VisibilityIcon from "@material-ui/icons/Visibility";
+import Loader from "../../../components/Loader";
+import styles from "./styles.module.scss";
 
 export const VerificationsList = () => {
   const [verifications, setVerifications] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
-      const allverifications = (await fetchAllVerifications()).message;
+      const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
       }
@@ -24,7 +26,7 @@ export const VerificationsList = () => {
     console.log(id);
     await verifyTrainer(id).then(async () => {
       console.log("verificado");
-      const allverifications = (await fetchAllVerifications()).message;
+      const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
       }
@@ -35,7 +37,7 @@ export const VerificationsList = () => {
     console.log(id);
     await rejectTrainer(id).then(async () => {
       console.log("rechazado");
-      const allverifications = (await fetchAllVerifications()).message;
+      const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
       }
@@ -47,7 +49,7 @@ export const VerificationsList = () => {
       case 1:
         return <span style={{ color: "blue" }}>Pendiente</span>;
       case 2:
-        return <span style={{ color: "green" }}>Aprovado</span>;
+        return <span style={{ color: "green" }}>Aprobado</span>;
       case 3:
         return <span style={{ color: "red" }}>Rechazado</span>;
       default:
@@ -55,14 +57,14 @@ export const VerificationsList = () => {
     }
   }
 
-  return (
-    <table className="VerificationsTable">
+  return verifications.length > 0 ? (
+    <table className={styles.table}>
       <thead>
         <tr>
           <th>ID</th>
           <th>Estado</th>
           <th>Video</th>
-          <th>Accion</th>
+          <th>Acción</th>
         </tr>
       </thead>
       <tbody>
@@ -77,6 +79,7 @@ export const VerificationsList = () => {
                   verification.trainer_id +
                   ".mp4?alt=media"
                 }
+                className={styles.link}
                 target="_blank"
                 download
               >
@@ -86,16 +89,16 @@ export const VerificationsList = () => {
             <td>
               {verification.status !== 2 ? (
                 <button
-                  className="yes"
+                  className={styles.yes}
                   onClick={() => verify(verification.trainer_id)}
                 >
-                  Vrificar
+                  Verificar
                 </button>
               ) : null}
               <span> </span>
               {verification.status !== 3 ? (
                 <button
-                  className="no"
+                  className={styles.no}
                   onClick={() => reject(verification.trainer_id)}
                 >
                   Rechazar
@@ -106,5 +109,7 @@ export const VerificationsList = () => {
         ))}
       </tbody>
     </table>
+  ) : (
+    <Loader />
   );
 };

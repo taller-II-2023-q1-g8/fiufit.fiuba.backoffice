@@ -1,19 +1,10 @@
 import React, { Fragment, useEffect } from "react";
-import { createDoughnutChart } from "../utils";
+import { createDoughnutChart, isLessThanADay } from "../utils";
+import styles from "./styles.module.scss";
 
 const UsersLogingMetrics = ({ usersData }) => {
   const totalUsers = usersData.length;
   const federatedUsers = usersData.filter((user) => user.is_federated).length;
-
-  const isLessThanADay = (date) => {
-    var today = new Date();
-    var dateToCalculate = new Date("2023-06-14T20:23:35.239878+00:00");
-
-    const diff = today - dateToCalculate;
-    const dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
-
-    return dayDiff <= 1;
-  };
 
   const recentlyCreatedUsersData = usersData.filter((user) =>
     isLessThanADay(user.created_at)
@@ -26,7 +17,7 @@ const UsersLogingMetrics = ({ usersData }) => {
   useEffect(() => {
     createDoughnutChart(
       "firstChart",
-      ["Fed", "No fed"],
+      ["Federado", "No federado"],
       [
         federatedRecentlyCreatedUsers,
         recentlyCreatedUsers - federatedRecentlyCreatedUsers,
@@ -48,46 +39,44 @@ const UsersLogingMetrics = ({ usersData }) => {
   return (
     <Fragment>
       <h3 style={{ alignSelf: "flex-start" }}>Registro federado</h3>
-      <div
-        style={{
-          display: "flex",
-          gap: 10,
-          placeItems: "center",
-        }}
-      >
-        <table className="PlansTable">
-          <thead>
+      <div style={{ display: "flex", gap: 70 }}>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th> </th>
+                <th>Federado</th>
+                <th>No federado</th>
+              </tr>
+            </thead>
             <tr>
-              <th> </th>
-              <th>Federado</th>
-              <th>No federado</th>
+              <td>Nuevos</td>
+              <td>{federatedRecentlyCreatedUsers}</td>
+              <td>{recentlyCreatedUsers - federatedRecentlyCreatedUsers}</td>
             </tr>
-          </thead>
-          <tr>
-            <td>Nuevos usuarios</td>
-            <td>{federatedRecentlyCreatedUsers}</td>
-            <td>{recentlyCreatedUsers - federatedRecentlyCreatedUsers}</td>
-          </tr>
-        </table>
-        <div style={{ height: 120, marginRight: 10 }}>
-          <canvas id="firstChart" />
+          </table>
+          <div className={styles.canvas}>
+            <canvas id="firstChart" />
+          </div>
         </div>
-        <table className="PlansTable">
-          <thead>
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th> </th>
+                <th>Federado</th>
+                <th>No federado</th>
+              </tr>
+            </thead>
             <tr>
-              <th> </th>
-              <th>Federado</th>
-              <th>No federado</th>
+              <td>Totales</td>
+              <td>{federatedUsers}</td>
+              <td>{totalUsers - federatedUsers}</td>
             </tr>
-          </thead>
-          <tr>
-            <td>Usuarios</td>
-            <td>{federatedUsers}</td>
-            <td>{totalUsers - federatedUsers}</td>
-          </tr>
-        </table>
-        <div style={{ height: 120 }}>
-          <canvas id="KindOfLoginChart" />
+          </table>
+          <div className={styles.canvas}>
+            <canvas id="KindOfLoginChart" />
+          </div>
         </div>
       </div>
     </Fragment>

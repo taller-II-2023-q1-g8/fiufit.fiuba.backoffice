@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
-import { createDoughnutChart } from "../utils";
+import { createDoughnutChart, isLessThanADay } from "../utils";
+import styles from "./styles.module.scss";
 
 const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   const trainerIds = allAthletes.map((athlete) => athlete.id);
@@ -11,15 +12,6 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   ).length;
   const amountOfAthletes = allUsers.length;
 
-  const isLessThanADay = (date) => {
-    var today = new Date();
-    var dateToCalculate = new Date("2023-06-14T20:23:35.239878+00:00");
-
-    const diff = today - dateToCalculate;
-    const dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
-    return dayDiff <= 1;
-  };
-
   const recentlyLoggedUsersData = allUsers.filter(
     (user) => user.last_login && isLessThanADay(user.last_login)
   );
@@ -28,7 +20,7 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   useEffect(() => {
     createDoughnutChart(
       "usersAmountChart",
-      ["Entrenador", "Atleta"],
+      ["Atletas", "Entrenadores"],
       [amountOfAthletes - athletesWithPlans, athletesWithPlans]
     );
 
@@ -42,30 +34,24 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   return (
     <Fragment>
       <h3 style={{ alignSelf: "flex-start" }}>Cantidad de usuarios</h3>
-      <div style={{ display: "flex", gap: 50 }}>
+      <div style={{ display: "flex", gap: 100 }}>
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div
-            style={{
-              display: "flex",
-              placeItems: "center",
-              gap: 10,
-            }}
-          >
-            <table className="PlansTable">
+          <div className={styles.tableContainer}>
+            <table className={styles.table}>
+              <thead>
+                <tr>
+                  <th>Entrenadores</th>
+                  <th>Atletas</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
               <tr>
-                <td>Cantidad de Entrenadores</td>
                 <td>{athletesWithPlans}</td>
-              </tr>
-              <tr>
-                <td>Cantidad de Atletas</td>
                 <td>{amountOfAthletes - athletesWithPlans}</td>
-              </tr>
-              <tr className="TotalAmount">
-                <td>Cantidad total</td>
                 <td>{amountOfAthletes}</td>
               </tr>
             </table>
-            <div style={{ height: 120, marginRight: 10 }}>
+            <div className={styles.canvas}>
               <canvas id="usersAmountChart" />
             </div>
           </div>
@@ -73,21 +59,20 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
             *Entrenador: Usuario que tiene planes creados.
           </p>
         </div>
-        <div
-          style={{
-            display: "flex",
-            placeItems: "center",
-            gap: 10,
-            height: "fit-content",
-          }}
-        >
-          <table className="PlansTable">
+        <div className={styles.tableContainer}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Logueados recientemente</th>
+                <th>Hace tiempo</th>
+              </tr>
+            </thead>
             <tr>
-              <td>Usuarios logueados recientemente</td>
               <td>{recentlyLoggedUsers}</td>
+              <td>{amountOfAthletes - recentlyLoggedUsers}</td>
             </tr>
           </table>
-          <div style={{ height: 120, marginRight: 10 }}>
+          <div className={styles.canvas}>
             <canvas id="recentlyLoggedUsers" />
           </div>
         </div>
