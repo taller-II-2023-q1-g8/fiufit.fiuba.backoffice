@@ -33,3 +33,35 @@
         }
     }
 }
+
+.unblockButton {
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-size: large;
+    margin-top: 15px;
+    background-color: #245a00;
+    box-shadow: none;
+    border: none;
+}
+
+.unblockButton:hover{
+    cursor: pointer;
+    background-color: #48583d;
+}
+
+.blockButton {
+    border-radius: 6px;
+    padding: 10px;
+    color: white;
+    font-size: large;
+    margin-top: 15px;
+    box-shadow: none;
+    border: none;
+    background-color: #5a0000;
+}
+
+.blockButton:hover{
+    cursor: pointer;
+    background-color: #5c3c3c;
+}
