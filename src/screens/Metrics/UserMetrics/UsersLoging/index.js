@@ -17,7 +17,7 @@ const UsersLogingMetrics = ({ usersData }) => {
   useEffect(() => {
     createDoughnutChart(
       "firstChart",
-      ["Fed", "No fed"],
+      ["Federado", "No federado"],
       [
         federatedRecentlyCreatedUsers,
         recentlyCreatedUsers - federatedRecentlyCreatedUsers,
