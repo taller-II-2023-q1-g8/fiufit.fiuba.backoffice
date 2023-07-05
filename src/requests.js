@@ -1,3 +1,10 @@
+const API_KEY = process.env.FiuFitAuth
+if (!API_KEY) {
+  throw new Error(
+    "API_KEY not found."
+  );
+}
+
 const fetchData = async (url) =>
   fetch(url, {
     method: "GET",
@@ -77,7 +84,7 @@ export const verifyTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+        FiuFitAuth: API_KEY
       },
       mode: "cors",
     }
@@ -91,7 +98,7 @@ export const rejectTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+        FiuFitAuth: API_KEY
       },
       mode: "cors",
     }
@@ -103,7 +110,7 @@ export const registerAdmin = async (data) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+      FiuFitAuth: API_KEY
     },
     mode: "cors",
     body: JSON.stringify(data),
@@ -115,7 +122,7 @@ export const blockUser = async (userToBlock, adminUsername) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+      FiuFitAuth: API_KEY
     },
     mode: "cors",
   });
@@ -126,7 +133,7 @@ export const blockUser = async (userToBlock, adminUsername) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: 'fS19vBgm0C6G56qEQJAXc4t_-aILiadH'
+      FiuFitAuth: API_KEY
     },
     mode: "cors",
   });
