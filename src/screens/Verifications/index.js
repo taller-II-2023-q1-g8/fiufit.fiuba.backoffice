@@ -10,7 +10,7 @@ export const Verifications = () => {
       <Topbar />
       <div className={styles.container}>
         <GoBackButton />
-        <h1>Centro de Verificacion</h1>
+        <h1>Centro de Verificación</h1>
         <Routes>
           <Route path="/" exact="true" element={<VerificationsList />} />
         </Routes>
