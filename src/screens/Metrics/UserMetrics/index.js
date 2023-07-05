@@ -27,6 +27,9 @@ const UserMetrics = ({ athletesData, plansData, usersData }) => {
           <UsersInformationMetrics usersData={usersData} />
         </Fragment>
       )}
+      {!shouldShowUsersAmountMetrics &&
+        !Array.isArray(usersData) &&
+        "No están disponibles estos datos"}
     </Fragment>
   );
 };

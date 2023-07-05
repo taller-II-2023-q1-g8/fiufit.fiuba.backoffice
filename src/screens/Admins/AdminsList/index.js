@@ -10,8 +10,13 @@ export default function AdminsList() {
 
   useEffect(() => {
     async function fetchData() {
-      const allAdmins = (await fetchAllAdmins()).message;
-      setAdmins(allAdmins);
+      try {
+        const allAdmins = (await fetchAllAdmins()).message;
+        setAdmins(allAdmins);
+      } catch (error) {
+        console.log({ error });
+        window.location.href = "/";
+      }
     }
     fetchData();
   }, []);

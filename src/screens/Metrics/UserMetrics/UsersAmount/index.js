@@ -20,7 +20,7 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   useEffect(() => {
     createDoughnutChart(
       "usersAmountChart",
-      ["Entrenador", "Atleta"],
+      ["Atletas", "Entrenadores"],
       [amountOfAthletes - athletesWithPlans, athletesWithPlans]
     );
 

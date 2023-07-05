@@ -21,15 +21,19 @@ const Metrics = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const allUsers = await fetchAllUsers();
-      setUsersData(allUsers.message);
-      const allPlans = await fetchAllPlans();
-      setPlansData(allPlans);
-      const allAthletes = await fetchAllAthletes();
-      setAthletesData(allAthletes);
-      const allAdmins = await fetchAllAdmins();
-      setAdminsData(allAdmins.message);
-
+      try {
+        const allUsers = await fetchAllUsers();
+        setUsersData(allUsers.message);
+        const allPlans = await fetchAllPlans();
+        setPlansData(allPlans);
+        const allAthletes = await fetchAllAthletes();
+        setAthletesData(allAthletes);
+        const allAdmins = await fetchAllAdmins();
+        setAdminsData(allAdmins.message);
+      } catch (error) {
+        console.log({ error });
+        window.location.href = "/";
+      }
       setLoading(false);
     }
     fetchData();
@@ -44,15 +48,21 @@ const Metrics = () => {
           <h1>Métricas</h1>
           {loading ? (
             <Loader />
-          ) : (
+          ) : usersData ? (
             <Fragment>
-              <UserMetrics
-                usersData={usersData}
-                plansData={plansData}
-                athletesData={athletesData}
-              />
+              {plansData && athletesData ? (
+                <UserMetrics
+                  usersData={usersData}
+                  plansData={plansData}
+                  athletesData={athletesData}
+                />
+              ) : (
+                "No se han podido recuperar los datos"
+              )}
               <AdminMetrics usersData={usersData} adminsData={adminsData} />
             </Fragment>
+          ) : (
+            "No se han podido recuperar los datos"
           )}
         </div>
       </div>

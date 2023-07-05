@@ -141,3 +141,28 @@ export const unblockUser = async (userToUnblock) =>
       mode: "cors",
     }
   );
+
+export const blockService = async (name) =>
+  await fetch(`https://api-gateway-k1nl.onrender.com/services/block/${name}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+    },
+    mode: "cors",
+  });
+
+export const unblockService = async (name) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/services/activate/${name}`,
+    {
+      method: "PUT",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+      },
+      mode: "cors",
+    }
+  );

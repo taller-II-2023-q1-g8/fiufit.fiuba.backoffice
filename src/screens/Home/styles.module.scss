@@ -23,30 +23,28 @@
 
 .options {
     justify-content: center;
-    flex-direction: column;
-    align-items: center;
     min-width: 800px;
+    max-width: 60%;
     border-radius: 10px;
     padding: 20px;
-    margin-top: 20px;
-    height: 75vh;
-    margin: 20px;
+    height: 100%;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    grid-gap: 30px;
+    grid-gap: 40px;
+    flex-wrap: wrap;
 }
 
 .optionContainer {
     background-color: var(--main);
     text-decoration: none;
     color: black;
-    padding: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    aspect-ratio: 1/2;
+    aspect-ratio: 2/3;
     border-radius: 20px;
     cursor: pointer;
     width: 270px;
@@ -68,6 +66,7 @@
         text-align: center;
         transition: 0.2s;
         color: white;
+        padding: 0px 3px;
     }
 }
 
@@ -99,10 +98,7 @@
     background-image: url('../../../public/metrics.png');
 }
 
-@media screen and (max-width: 889px) {
-
-    .HomeDataContainer {
-        width: 90vw;
-    }
-
+.servicesIcon {
+    filter: invert(100%) brightness(200%);
+    background-image: url('../../../public/service.png');
 }
