@@ -9,7 +9,7 @@ const PlanDetails = () => {
   const [planData, setPlanData] = useState([]);
   useEffect(() => {
     async function fetchData() {
-      const planData = (await fetchPlanById(params.id)).message;
+      const planData = await fetchPlanById(params.id);
       setPlanData(planData);
     }
     fetchData();

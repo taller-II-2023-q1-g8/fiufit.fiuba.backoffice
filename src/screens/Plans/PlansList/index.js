@@ -9,7 +9,7 @@ export const PlansList = () => {
 
   useEffect(() => {
     async function fetchData() {
-      const allPlans = (await fetchAllPlans()).message;
+      const allPlans = await fetchAllPlans();
       if (allPlans) setPlans(allPlans);
     }
     fetchData();
