@@ -1,0 +1,48 @@
+.table {
+    border-collapse: collapse;
+    font-size: 20px;
+    background-color: var(--secondary);
+    font-weight: 300;
+    border-radius: 10px;
+
+    >thead>tr>th {
+        padding: 10px;
+        border-left: white solid 1px;
+        border-top: white solid 1px;
+        border-right: white solid 1px;
+        color: white;
+        min-width: 130px;
+        max-width: 210px;
+    }
+
+    >tr {
+        background-color: white;
+
+        >td {
+            text-align: center;
+            padding: 4px 20px;
+            border: rgb(255, 223, 178) solid 1px;
+        }
+
+        >th {
+            width: 100px;
+            font-weight: 200;
+        }
+
+        &:hover {
+            background-color: rgb(255, 219, 171);
+        }
+    }
+}
+
+.tableContainer {
+    display: flex;
+    place-items: center;
+    gap: 10px;
+    height: fit-content;
+}
+
+.canvas {
+    height: 120px;
+    margin-right: 10px;
+}
