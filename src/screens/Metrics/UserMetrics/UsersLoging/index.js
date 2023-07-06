@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { createDoughnutChart, isLessThanADay } from "../utils";
+import { createDoughnutChart, isLessThan20Days } from "../utils";
 import styles from "./styles.module.scss";
 
 const UsersLogingMetrics = ({ usersData }) => {
@@ -7,7 +7,7 @@ const UsersLogingMetrics = ({ usersData }) => {
   const federatedUsers = usersData.filter((user) => user.is_federated).length;
 
   const recentlyCreatedUsersData = usersData.filter((user) =>
-    isLessThanADay(user.created_at)
+    isLessThan20Days(user.created_at)
   );
   const recentlyCreatedUsers = recentlyCreatedUsersData.length;
   const federatedRecentlyCreatedUsers = recentlyCreatedUsersData.filter(

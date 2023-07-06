@@ -33,9 +33,9 @@ export const createDoughnutChart = (chartId, labels, data) => {
   });
 };
 
-export const isLessThanADay = (date) => {
+export const isLessThan20Days = (date) => {
   var today = new Date();
-  var dateToCalculate = new Date("2023-06-14T20:23:35.239878+00:00");
+  var dateToCalculate = new Date(date);
 
   const diff = today - dateToCalculate;
   const dayDiff = Math.floor(diff / (1000 * 60 * 60 * 24));
