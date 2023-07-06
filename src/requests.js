@@ -120,6 +120,20 @@ export const registerAdmin = async (data) =>
     body: JSON.stringify(data),
   });
 
+export const registerService = async (name, description) =>
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/services/add?name=${name}&description=${description}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": API_KEY,
+      },
+      mode: "cors",
+    }
+  );
+
 export const blockUser = async (userToBlock, adminUsername) =>
   await fetch(
     `https://api-gateway-k1nl.onrender.com/user/block/${userToBlock}/${adminUsername}`,

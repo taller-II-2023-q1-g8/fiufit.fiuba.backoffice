@@ -30,7 +30,7 @@ export default function ServicesList() {
           <ServiceEntry service={service} />
         ))}
       </table>
-      <Link to="/admins/add">
+      <Link to="/services/add">
         <button className={styles.button}>Agregar</button>
       </Link>
     </Fragment>
