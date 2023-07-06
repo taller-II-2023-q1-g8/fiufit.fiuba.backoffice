@@ -1,4 +1,5 @@
 const API_KEY = process.env.API_KEY
+console.log(process.env)
 if (API_KEY == null) {
   console.log("No API KEY in Environment Variables.")
   process.exit(-1)
