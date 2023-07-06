@@ -1,0 +1,54 @@
+.container {
+    align-self: center;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    padding-top: 0px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+
+    &>div>div>h1 {
+        color: var(--main);
+        font-weight: 1000;
+        padding: 0;
+        margin-bottom: 0;
+    }
+
+    &>div>div>h2 {
+        margin-top: 0;
+        padding: 0;
+    }
+}
+
+.Title {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.buttonsContainer {
+    align-self: center;
+}
+
+.button {
+    margin-bottom: 10px;
+    background-color: var(--main);
+    font-size: 16px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    padding: 10px;
+    font-weight: 600;
+    color: white;
+    margin: 30px;
+
+    &:hover {
+        transform: scale(1.02);
+        background-color: var(--main_soft);
+        cursor: pointer;
+    }
+}

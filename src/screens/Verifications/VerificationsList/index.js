@@ -49,7 +49,7 @@ export const VerificationsList = () => {
       case 1:
         return <span style={{ color: "blue" }}>Pendiente</span>;
       case 2:
-        return <span style={{ color: "green" }}>Aprovado</span>;
+        return <span style={{ color: "green" }}>Aprobado</span>;
       case 3:
         return <span style={{ color: "red" }}>Rechazado</span>;
       default:
@@ -79,6 +79,7 @@ export const VerificationsList = () => {
                   verification.trainer_id +
                   ".mp4?alt=media"
                 }
+                className={styles.link}
                 target="_blank"
                 download
               >

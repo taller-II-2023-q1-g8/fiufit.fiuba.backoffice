@@ -1,4 +1,3 @@
-import "./index.css";
 import { Link } from "react-router-dom";
 import { Topbar } from "../../components/Topbar";
 import styles from "./styles.module.scss";
@@ -22,11 +21,15 @@ export function HomeScreen() {
         </Link>
         <Link to="/verifications" className={styles.optionContainer}>
           <div className={`${styles.icon} ${styles.verificationsIcon}`} />
-          <p>Centro de Verificacion</p>
+          <p>Centro de Verificación</p>
         </Link>
         <Link to="/metrics" className={styles.optionContainer}>
           <div className={`${styles.icon} ${styles.metricsIcon}`} />
           <p>Métricas</p>
+        </Link>
+        <Link to="/services" className={styles.optionContainer}>
+          <div className={`${styles.icon} ${styles.servicesIcon}`} />
+          <p>Servicios</p>
         </Link>
       </div>
     </div>
