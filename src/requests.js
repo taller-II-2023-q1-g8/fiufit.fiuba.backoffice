@@ -170,3 +170,27 @@ export const unblockService = async (name) =>
       mode: "cors",
     }
   );
+
+  export const blockPlan = async (planID) =>
+    fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+      },
+      mode: "cors",
+      body: JSON.stringify({ blocked: true }),
+    });
+
+   export const unblockPlan = async (planID) =>
+     fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
+       method: "POST",
+       headers: {
+         Accept: "application/json",
+         "Content-Type": "application/json",
+         "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+       },
+       mode: "cors",
+       body: JSON.stringify({ blocked: false }),
+     });
