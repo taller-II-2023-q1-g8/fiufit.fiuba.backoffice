@@ -6,6 +6,8 @@ import styles from "./styles.module.scss";
 
 export default function UsersList() {
   const [users, setUsers] = useState([]);
+  const [error, setError] = useState(false);
+  
   useEffect(() => {
     async function fetchData() {
       try {
@@ -13,13 +15,13 @@ export default function UsersList() {
         setUsers(allUsers.message);
       } catch (error) {
         console.log({ error });
-        window.location.href = "/";
+        setError(error);
       }
     }
     fetchData();
   }, []);
 
-  return users.length > 0 ? (
+  return users.length > 0 && !error ? (
     <table className={styles.table}>
       <thead>
         <tr>
@@ -36,6 +38,8 @@ export default function UsersList() {
           <UserEntry key={user.username} user={user} />
         ))}
     </table>
+  ) : error ? (
+    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
   ) : (
     <Loader />
   );

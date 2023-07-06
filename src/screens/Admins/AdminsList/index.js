@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 export default function AdminsList() {
   const [admins, setAdmins] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -15,13 +16,13 @@ export default function AdminsList() {
         setAdmins(allAdmins);
       } catch (error) {
         console.log({ error });
-        window.location.href = "/";
+        setError(error);
       }
     }
     fetchData();
   }, []);
 
-  return admins.length > 0 ? (
+  return admins.length > 0 && !error ? (
     <Fragment>
       <table className={styles.table}>
         <thead>
@@ -43,6 +44,8 @@ export default function AdminsList() {
         <button className={styles.button}>Agregar</button>
       </Link>
     </Fragment>
+  ) : error ? (
+    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
   ) : (
     <Loader />
   );

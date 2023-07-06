@@ -17,6 +17,7 @@ const Metrics = () => {
   const [plansData, setPlansData] = useState({});
   const [athletesData, setAthletesData] = useState({});
   const [adminsData, setAdminsData] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -31,7 +32,7 @@ const Metrics = () => {
         setAdminsData(allAdmins.message);
       } catch (error) {
         console.log({ error });
-        window.location.href = "/";
+        setError(true);
       }
       setLoading(false);
     }
@@ -44,7 +45,9 @@ const Metrics = () => {
         <Topbar />
         <div className={styles.container}>
           <h1>Métricas</h1>
-          {loading ? (
+          {error ? (
+            <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+          ) : loading ? (
             <Loader />
           ) : usersData ? (
             <Fragment>
