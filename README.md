@@ -110,8 +110,8 @@ After you have logged in, you can visualize and administrate all the app informa
 <!-- CONTACT -->
 ## Contact
 
-Ana G. Gutson - agutson@fi.uba.ar
-Franco Papa - fpapa@fi.uba.ar
+* Ana G. Gutson - agutson@fi.uba.ar
+* Franco Papa - fpapa@fi.uba.ar
 
 Project Link: [https://github.com/taller-II-2023-q1-g8](https://github.com/taller-II-2023-q1-g8)
 
