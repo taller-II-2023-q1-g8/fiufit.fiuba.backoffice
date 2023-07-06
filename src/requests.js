@@ -1,4 +1,4 @@
-const API_KEY = process.env.FiuFitAuth
+const API_KEY = process.env.API_KEY
 if (!API_KEY) {
   throw new Error(
     "API_KEY not found."
