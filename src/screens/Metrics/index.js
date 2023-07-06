@@ -10,7 +10,6 @@ import {
 import UserMetrics from "./UserMetrics";
 import Loader from "../../components/Loader";
 import AdminMetrics from "./AdminMetrics";
-import { GoBackButton } from "../../components/GoBackButton";
 
 const Metrics = () => {
   const [loading, setLoading] = useState(true);
@@ -44,7 +43,6 @@ const Metrics = () => {
       <div className={styles.pageContainer}>
         <Topbar />
         <div className={styles.container}>
-          <GoBackButton />
           <h1>Métricas</h1>
           {loading ? (
             <Loader />
