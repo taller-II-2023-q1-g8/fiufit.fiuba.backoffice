@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { Topbar } from "../../components/Topbar";
 import styles from "./styles.module.scss";
-import { GoBackButton } from "../../components/GoBackButton";
 import ServicesList from "./ServicesList";
 import ServiceDetails from "./ServiceDetails";
 import AddService from "./AddService";
@@ -10,7 +9,6 @@ export const Services = () => (
   <div className={styles.pageContainer}>
     <Topbar />
     <div className={styles.container}>
-      <GoBackButton />
       <h1>Servicios</h1>
       <Routes>
         <Route path="/" exact="true" element={<ServicesList />} />

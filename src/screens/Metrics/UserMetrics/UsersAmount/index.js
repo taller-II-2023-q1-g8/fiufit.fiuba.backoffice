@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { createDoughnutChart, isLessThanADay } from "../utils";
+import { createDoughnutChart, isLessThan20Days } from "../utils";
 import styles from "./styles.module.scss";
 
 const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
@@ -13,7 +13,7 @@ const UsersAmountMetrics = ({ allUsers, allAthletes, allPlans }) => {
   const amountOfAthletes = allUsers.length;
 
   const recentlyLoggedUsersData = allUsers.filter(
-    (user) => user.last_login && isLessThanADay(user.last_login)
+    (user) => user.last_login && isLessThan20Days(user.last_login)
   );
   const recentlyLoggedUsers = recentlyLoggedUsersData.length;
 

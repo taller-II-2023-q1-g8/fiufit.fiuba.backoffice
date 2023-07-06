@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 
 export const PlansList = () => {
   const [plans, setPlans] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -14,13 +15,13 @@ export const PlansList = () => {
         if (allPlans) setPlans(allPlans);
       } catch (error) {
         console.log({ error });
-        window.location.href = "/";
+        setError(error);
       }
     }
     fetchData();
   }, []);
 
-  return plans.length > 0 ? (
+  return plans.length > 0 && !error ? (
     <table className={styles.table}>
       <thead>
         <tr>
@@ -52,6 +53,8 @@ export const PlansList = () => {
         </tr>
       ))}
     </table>
+  ) : error ? (
+    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
   ) : (
     <Loader />
   );

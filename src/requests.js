@@ -1,8 +1,7 @@
-const API_KEY = process.env.API_KEY
-console.log(process.env)
+const API_KEY = "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7";
 if (API_KEY == null) {
-  console.log("No API KEY in Environment Variables.")
-  process.exit(-1)
+  console.log("No API KEY in Environment Variables.");
+  process.exit(-1);
 }
 
 const fetchData = async (url) =>
@@ -11,7 +10,7 @@ const fetchData = async (url) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+      "Fiu-Fit-Auth": API_KEY,
     },
     mode: "cors",
   });
@@ -89,7 +88,7 @@ export const verifyTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        FiuFitAuth: API_KEY
+        "Fiu-Fit-Auth": API_KEY,
       },
       mode: "cors",
     }
@@ -103,7 +102,7 @@ export const rejectTrainer = async (id) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        FiuFitAuth: API_KEY
+        "Fiu-Fit-Auth": API_KEY,
       },
       mode: "cors",
     }
@@ -115,22 +114,25 @@ export const registerAdmin = async (data) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: API_KEY
+      "Fiu-Fit-Auth": API_KEY,
     },
     mode: "cors",
     body: JSON.stringify(data),
   });
 
 export const blockUser = async (userToBlock, adminUsername) =>
-  await fetch(`https://api-gateway-k1nl.onrender.com/user/block/${userToBlock}/${adminUsername}`, {
-    method: "POST",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-      FiuFitAuth: API_KEY
-    },
-    mode: "cors",
-  });
+  await fetch(
+    `https://api-gateway-k1nl.onrender.com/user/block/${userToBlock}/${adminUsername}`,
+    {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Fiu-Fit-Auth": API_KEY,
+      },
+      mode: "cors",
+    }
+  );
 
 export const unblockUser = async (userToUnblock) =>
   await fetch(
@@ -140,7 +142,7 @@ export const unblockUser = async (userToUnblock) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+        "Fiu-Fit-Auth": API_KEY,
       },
       mode: "cors",
     }
@@ -152,7 +154,7 @@ export const blockService = async (name) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      FiuFitAuth: API_KEY
+      "Fiu-Fit-Auth": API_KEY,
     },
     mode: "cors",
   });
@@ -165,32 +167,33 @@ export const unblockService = async (name) =>
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
+        "Fiu-Fit-Auth": API_KEY,
       },
       mode: "cors",
     }
   );
 
-  export const blockPlan = async (planID) =>
-    fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
-      },
-      mode: "cors",
-      body: JSON.stringify({ blocked: true }),
-    });
+export const blockPlan = async (planID) =>
+  fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Fiu-Fit-Auth": API_KEY,
+    },
+    mode: "cors",
+    body: JSON.stringify({ blocked: true }),
+  });
 
-   export const unblockPlan = async (planID) =>
-     fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
-       method: "POST",
-       headers: {
-         Accept: "application/json",
-         "Content-Type": "application/json",
-         "Fiu-Fit-Auth": "mn3YK1ijws0ThRpUn19N3SPlkTgUfXg7",
-       },
-       mode: "cors",
-       body: JSON.stringify({ blocked: false }),
-     });
+export const unblockPlan = async (planID) =>
+  fetch(`https://api-gateway-k1nl.onrender.com/plans/${planID}/block/`, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Fiu-Fit-Auth": API_KEY,
+    },
+    mode: "cors",
+    body: JSON.stringify({ blocked: false }),
+  });
+

@@ -11,12 +11,18 @@ import styles from "./styles.module.scss";
 
 export const VerificationsList = () => {
   const [verifications, setVerifications] = useState([]);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
-      const allverifications = await fetchAllVerifications();
-      if (allverifications) {
-        setVerifications(allverifications);
+      try {
+        const allverifications = await fetchAllVerifications();
+        if (allverifications) {
+          setVerifications(allverifications);
+        }
+      } catch (error) {
+        console.log({ error });
+        setError(true);
       }
     }
     fetchData();
@@ -57,7 +63,7 @@ export const VerificationsList = () => {
     }
   }
 
-  return verifications.length > 0 ? (
+  return verifications.length > 0 && !error ? (
     <table className={styles.table}>
       <thead>
         <tr>
@@ -109,6 +115,8 @@ export const VerificationsList = () => {
         ))}
       </tbody>
     </table>
+  ) : error ? (
+    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
   ) : (
     <Loader />
   );

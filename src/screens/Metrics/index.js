@@ -10,7 +10,6 @@ import {
 import UserMetrics from "./UserMetrics";
 import Loader from "../../components/Loader";
 import AdminMetrics from "./AdminMetrics";
-import { GoBackButton } from "../../components/GoBackButton";
 
 const Metrics = () => {
   const [loading, setLoading] = useState(true);
@@ -18,6 +17,7 @@ const Metrics = () => {
   const [plansData, setPlansData] = useState({});
   const [athletesData, setAthletesData] = useState({});
   const [adminsData, setAdminsData] = useState({});
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -32,7 +32,7 @@ const Metrics = () => {
         setAdminsData(allAdmins.message);
       } catch (error) {
         console.log({ error });
-        window.location.href = "/";
+        setError(true);
       }
       setLoading(false);
     }
@@ -44,9 +44,10 @@ const Metrics = () => {
       <div className={styles.pageContainer}>
         <Topbar />
         <div className={styles.container}>
-          <GoBackButton />
           <h1>Métricas</h1>
-          {loading ? (
+          {error ? (
+            <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+          ) : loading ? (
             <Loader />
           ) : usersData ? (
             <Fragment>
