@@ -31,7 +31,6 @@ const Metrics = () => {
         const allAdmins = await fetchAllAdmins();
         setAdminsData(allAdmins.message);
       } catch (error) {
-        console.log({ error });
         setError(true);
       }
       setLoading(false);
@@ -46,7 +45,7 @@ const Metrics = () => {
         <div className={styles.container}>
           <h1>Métricas</h1>
           {error ? (
-            <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+            <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
           ) : loading ? (
             <Loader />
           ) : usersData ? (

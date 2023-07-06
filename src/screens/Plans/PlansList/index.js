@@ -14,7 +14,6 @@ export const PlansList = () => {
         const allPlans = await fetchAllPlans();
         if (allPlans) setPlans(allPlans);
       } catch (error) {
-        console.log({ error });
         setError(error);
       }
     }
@@ -54,7 +53,7 @@ export const PlansList = () => {
       ))}
     </table>
   ) : error ? (
-    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+    <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
     <Loader />
   );

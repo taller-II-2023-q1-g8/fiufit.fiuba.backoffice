@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  fetchAllAthletes,
   fetchAllVerifications,
   rejectTrainer,
   verifyTrainer,
@@ -12,6 +13,7 @@ import styles from "./styles.module.scss";
 export const VerificationsList = () => {
   const [verifications, setVerifications] = useState([]);
   const [error, setError] = useState(false);
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
     async function fetchData() {
@@ -20,18 +22,19 @@ export const VerificationsList = () => {
         if (allverifications) {
           setVerifications(allverifications);
         }
+        const allUsers = await fetchAllAthletes();
+        if (allUsers) {
+          setUsers(allUsers);
+        }
       } catch (error) {
-        console.log({ error });
-        setError(true);
+        setError(error);
       }
     }
     fetchData();
   }, []);
 
   async function verify(id) {
-    console.log(id);
     await verifyTrainer(id).then(async () => {
-      console.log("verificado");
       const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
@@ -40,9 +43,7 @@ export const VerificationsList = () => {
   }
 
   async function reject(id) {
-    console.log(id);
     await rejectTrainer(id).then(async () => {
-      console.log("rechazado");
       const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
@@ -63,11 +64,14 @@ export const VerificationsList = () => {
     }
   }
 
+  const getTrainerName = (id) =>
+    users.find((user) => user.id === id)?.external_id || "No name";
+
   return verifications.length > 0 && !error ? (
     <table className={styles.table}>
       <thead>
         <tr>
-          <th>ID</th>
+          <th>Nombre Entrenador</th>
           <th>Estado</th>
           <th>Video</th>
           <th>Acción</th>
@@ -76,7 +80,7 @@ export const VerificationsList = () => {
       <tbody>
         {verifications.map((verification) => (
           <tr key={verification.id}>
-            <td>{verification.trainer_id}</td>
+            <td>{getTrainerName(verification.trainer_id)}</td>
             <td>{getStatus(verification.status)}</td>
             <td>
               <Link
@@ -116,7 +120,7 @@ export const VerificationsList = () => {
       </tbody>
     </table>
   ) : error ? (
-    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+    <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
     <Loader />
   );

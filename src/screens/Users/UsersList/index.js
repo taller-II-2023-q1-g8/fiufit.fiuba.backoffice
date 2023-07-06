@@ -7,14 +7,13 @@ import styles from "./styles.module.scss";
 export default function UsersList() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
-  
+
   useEffect(() => {
     async function fetchData() {
       try {
         const allUsers = await fetchAllUsers();
         setUsers(allUsers.message);
       } catch (error) {
-        console.log({ error });
         setError(error);
       }
     }
@@ -39,7 +38,7 @@ export default function UsersList() {
         ))}
     </table>
   ) : error ? (
-    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+    <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
     <Loader />
   );

@@ -33,7 +33,11 @@ export default function AddAdmin() {
     };
 
     registerAdmin(inputData).then((response) => {
-      console.info(response);
+      if (!response.ok) alert("Por favor complete todos los campos");
+      else {
+        alert("Registro exitoso!");
+        window.location.href = "/";
+      }
     });
   };
   const prevStep = () => setCurrentStep((c) => (c > 1 ? c - 1 : c));
