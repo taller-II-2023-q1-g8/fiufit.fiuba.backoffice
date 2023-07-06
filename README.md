@@ -51,7 +51,7 @@ Here an administrator can:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Built With
-* [![Javascript][Javascript]]
+* [![Javascript][Javascript]][Javascript.com]
 * [![ReactNative][ReactNative]][https://reactnative.dev/]
 * [![ReactRouter][ReactRouter]][reactrouter.com]
 * [![SASS][SASS]][sass-lang.com]
@@ -127,4 +127,6 @@ Project Link: [https://github.com/taller-II-2023-q1-g8](https://github.com/talle
 [sass-lang.com]: https://sass-lang.com/
 [ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [reactrouter.com]: https://reactrouter.com
-[Javacript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[Javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[Javascript.com]: https://developer.mozilla.org/es/docs/Web/JavaScript
+
