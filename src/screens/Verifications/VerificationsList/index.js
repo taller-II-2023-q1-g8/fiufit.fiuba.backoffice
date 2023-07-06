@@ -19,6 +19,7 @@ export const VerificationsList = () => {
     async function fetchData() {
       try {
         const allverifications = await fetchAllVerifications();
+        console.log({ allverifications });
         if (allverifications) {
           setVerifications(allverifications);
         }
@@ -27,7 +28,7 @@ export const VerificationsList = () => {
           setUsers(allUsers);
         }
       } catch (error) {
-        setError(error);
+        setError(true);
       }
     }
     fetchData();
@@ -67,7 +68,7 @@ export const VerificationsList = () => {
   const getTrainerName = (id) =>
     users.find((user) => user.id === id)?.external_id || "No name";
 
-  return verifications.length > 0 && !error ? (
+  return verifications.length > 0 && users.length > 0 && !error ? (
     <table className={styles.table}>
       <thead>
         <tr>
