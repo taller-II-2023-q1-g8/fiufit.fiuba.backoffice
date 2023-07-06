@@ -9,23 +9,23 @@ import { unblockPlan, blockPlan } from "../../../requests";
 const PlanDetails = () => {
   const params = useParams();
   const [planData, setPlanData] = useState([]);
+  async function fetchData() {
+    const planData = await fetchPlanById(params.id);
+    setPlanData(planData);
+  }
   useEffect(() => {
-    async function fetchData() {
-      const planData = await fetchPlanById(params.id);
-      setPlanData(planData);
-    }
     fetchData();
   }, []);
 
   const handleBlockPlan = async () => {
     blockPlan(params.id).then(() => {
-      window.location.reload();
+      fetchData();
     });
   };
 
   const handleUnblockPlan = async () => {
     unblockPlan(params.id).then(() => {
-      window.location.reload();
+      fetchData();
     });
   };
 
