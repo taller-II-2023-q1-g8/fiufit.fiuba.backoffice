@@ -68,58 +68,62 @@ export const VerificationsList = () => {
   const getTrainerName = (id) =>
     users.find((user) => user.id === id)?.external_id || "No name";
 
-  return verifications.length > 0 && users.length > 0 && !error ? (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>Nombre Entrenador</th>
-          <th>Estado</th>
-          <th>Video</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        {verifications.map((verification) => (
-          <tr key={verification.id}>
-            <td>{getTrainerName(verification.trainer_id)}</td>
-            <td>{getStatus(verification.status)}</td>
-            <td>
-              <Link
-                to={
-                  "https://firebasestorage.googleapis.com/v0/b/fiufit-73a11.appspot.com/o/verifications%2Fuser_" +
-                  verification.trainer_id +
-                  ".mp4?alt=media"
-                }
-                className={styles.link}
-                target="_blank"
-                download
-              >
-                <VisibilityIcon />
-              </Link>
-            </td>
-            <td>
-              {verification.status !== 2 ? (
-                <button
-                  className={styles.yes}
-                  onClick={() => verify(verification.trainer_id)}
-                >
-                  Verificar
-                </button>
-              ) : null}
-              <span> </span>
-              {verification.status !== 3 ? (
-                <button
-                  className={styles.no}
-                  onClick={() => reject(verification.trainer_id)}
-                >
-                  Rechazar
-                </button>
-              ) : null}
-            </td>
+  return verifications && users && !error ? (
+    verifications.length > 0 ? (
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Nombre Entrenador</th>
+            <th>Estado</th>
+            <th>Video</th>
+            <th>Acción</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {verifications.map((verification) => (
+            <tr key={verification.id}>
+              <td>{getTrainerName(verification.trainer_id)}</td>
+              <td>{getStatus(verification.status)}</td>
+              <td>
+                <Link
+                  to={
+                    "https://firebasestorage.googleapis.com/v0/b/fiufit-73a11.appspot.com/o/verifications%2Fuser_" +
+                    verification.trainer_id +
+                    ".mp4?alt=media"
+                  }
+                  className={styles.link}
+                  target="_blank"
+                  download
+                >
+                  <VisibilityIcon />
+                </Link>
+              </td>
+              <td>
+                {verification.status !== 2 ? (
+                  <button
+                    className={styles.yes}
+                    onClick={() => verify(verification.trainer_id)}
+                  >
+                    Verificar
+                  </button>
+                ) : null}
+                <span> </span>
+                {verification.status !== 3 ? (
+                  <button
+                    className={styles.no}
+                    onClick={() => reject(verification.trainer_id)}
+                  >
+                    Rechazar
+                  </button>
+                ) : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      "No hay datos disponibles"
+    )
   ) : error ? (
     <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
