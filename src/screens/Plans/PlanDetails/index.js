@@ -4,6 +4,8 @@ import Loader from "../../../components/Loader";
 import React, { useEffect, useState, Fragment } from "react";
 import styles from "./styles.module.scss";
 
+import { unblockPlan, blockPlan } from "../../../requests";
+
 const PlanDetails = () => {
   const params = useParams();
   const [planData, setPlanData] = useState([]);
@@ -15,8 +17,21 @@ const PlanDetails = () => {
     fetchData();
   }, []);
 
+  const handleBlockPlan = async () => {
+    blockPlan(params.id).then(() => {
+      window.location.reload();
+    });
+  };
+
+  const handleUnblockPlan = async () => {
+    unblockPlan(params.id).then(() => {
+      window.location.reload();
+    });
+  };
+
   const {
     id,
+    blocked,
     title,
     description,
     difficulty,
@@ -56,6 +71,7 @@ const PlanDetails = () => {
         <thead>
           <tr>
             <th>ID</th>
+            <th>Estado</th>
             <th>Título del plan</th>
             <th>Descripción</th>
             <th>Dificultad</th>
@@ -67,6 +83,7 @@ const PlanDetails = () => {
         </thead>
         <tr key={id}>
           <td>{id || "-"}</td>
+          <td>{blocked === "true" ? "Bloqueado" : "Desbloqueado"}</td>
           <td>{title || "-"}</td>
           <td>{description || "-"}</td>
           <td>{mapDifficulty(difficulty) || "-"}</td>
@@ -137,6 +154,15 @@ const PlanDetails = () => {
             ))}
           </table>
         </Fragment>
+      )}
+      {blocked === "true" ? (
+        <button className={styles.unblockButton} onClick={handleUnblockPlan}>
+          Desbloquear
+        </button>
+      ) : (
+        <button className={styles.blockButton} onClick={handleBlockPlan}>
+          Bloquear
+        </button>
       )}
     </div>
   ) : (
