@@ -12,24 +12,25 @@ const ServiceDetails = () => {
   const params = useParams();
   const [service, setService] = useState([]);
 
+  async function fetchData() {
+    const services = (await fetchAllServices()).message.services;
+    const service = services.find((service) => service.name === params.name);
+    setService(service);
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const services = (await fetchAllServices()).message.services;
-      const service = services.find((service) => service.name === params.name);
-      setService(service);
-    }
     fetchData();
   }, []);
 
   const handleBlockUser = async () => {
     blockService(params.name).then(() => {
-      window.location.reload();
+      fetchData();
     });
   };
 
   const handleUnblockUser = async () => {
     unblockService(params.name).then(() => {
-      window.location.reload();
+      fetchData();
     });
   };
 

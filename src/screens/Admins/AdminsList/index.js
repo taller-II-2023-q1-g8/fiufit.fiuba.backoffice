@@ -15,7 +15,6 @@ export default function AdminsList() {
         const allAdmins = (await fetchAllAdmins()).message;
         setAdmins(allAdmins);
       } catch (error) {
-        console.log({ error });
         setError(error);
       }
     }
@@ -45,7 +44,7 @@ export default function AdminsList() {
       </Link>
     </Fragment>
   ) : error ? (
-    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+    <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
     <Loader />
   );

@@ -4,7 +4,6 @@ import {
   fetchUserByUsername,
   fetchBlockedStatusByUsername,
   blockUser,
-  fetchAdminByUsername,
   fetchAdminByEmail,
   unblockUser,
 } from "../../../requests";
@@ -17,16 +16,18 @@ const UserDetails = () => {
   const adminContext = useContext(userContext);
   const [userData, setUserData] = useState([]);
   const [blockedData, setBlockedData] = useState([]);
+
+  async function fetchData() {
+    const userData = (await fetchUserByUsername(params.username)).message;
+    setUserData(userData);
+  }
+  async function fetchBlockedData() {
+    const blockedData = (await fetchBlockedStatusByUsername(params.username))
+      .message;
+    setBlockedData(blockedData);
+  }
+
   useEffect(() => {
-    async function fetchData() {
-      const userData = (await fetchUserByUsername(params.username)).message;
-      setUserData(userData);
-    }
-    async function fetchBlockedData() {
-      const blockedData = (await fetchBlockedStatusByUsername(params.username))
-        .message;
-      setBlockedData(blockedData);
-    }
     fetchData();
     fetchBlockedData();
   }, []);
@@ -34,11 +35,17 @@ const UserDetails = () => {
   const handleBlockUser = async () => {
     const adminUsername = (await fetchAdminByEmail(adminContext.email)).message
       .username;
-    blockUser(params.username, adminUsername).then(() => {window.location.reload()});
+    blockUser(params.username, adminUsername).then(() => {
+      fetchData();
+      fetchBlockedData();
+    });
   };
 
   const handleUnblockUser = async () => {
-    unblockUser(params.username).then(() => {window.location.reload()});
+    unblockUser(params.username).then(() => {
+      fetchData();
+      fetchBlockedData();
+    });
   };
 
   const {
@@ -110,9 +117,13 @@ const UserDetails = () => {
         </tr>
       </table>
       {blockedData.blocked ? (
-        <button className={styles.unblockButton} onClick={handleUnblockUser}>Desbloquear</button>
+        <button className={styles.unblockButton} onClick={handleUnblockUser}>
+          Desbloquear
+        </button>
       ) : (
-        <button className={styles.blockButton} onClick={handleBlockUser}>Bloquear</button>
+        <button className={styles.blockButton} onClick={handleBlockUser}>
+          Bloquear
+        </button>
       )}
     </div>
   ) : (

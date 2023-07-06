@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
+  fetchAllAthletes,
   fetchAllVerifications,
   rejectTrainer,
   verifyTrainer,
@@ -12,16 +13,21 @@ import styles from "./styles.module.scss";
 export const VerificationsList = () => {
   const [verifications, setVerifications] = useState([]);
   const [error, setError] = useState(false);
+  const [users, setUsers] = useState({});
 
   useEffect(() => {
     async function fetchData() {
       try {
         const allverifications = await fetchAllVerifications();
+        console.log({ allverifications });
         if (allverifications) {
           setVerifications(allverifications);
         }
+        const allUsers = await fetchAllAthletes();
+        if (allUsers) {
+          setUsers(allUsers);
+        }
       } catch (error) {
-        console.log({ error });
         setError(true);
       }
     }
@@ -29,9 +35,7 @@ export const VerificationsList = () => {
   }, []);
 
   async function verify(id) {
-    console.log(id);
     await verifyTrainer(id).then(async () => {
-      console.log("verificado");
       const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
@@ -40,9 +44,7 @@ export const VerificationsList = () => {
   }
 
   async function reject(id) {
-    console.log(id);
     await rejectTrainer(id).then(async () => {
-      console.log("rechazado");
       const allverifications = await fetchAllVerifications();
       if (allverifications) {
         setVerifications(allverifications);
@@ -63,60 +65,67 @@ export const VerificationsList = () => {
     }
   }
 
-  return verifications.length > 0 && !error ? (
-    <table className={styles.table}>
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Estado</th>
-          <th>Video</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tbody>
-        {verifications.map((verification) => (
-          <tr key={verification.id}>
-            <td>{verification.trainer_id}</td>
-            <td>{getStatus(verification.status)}</td>
-            <td>
-              <Link
-                to={
-                  "https://firebasestorage.googleapis.com/v0/b/fiufit-73a11.appspot.com/o/verifications%2Fuser_" +
-                  verification.trainer_id +
-                  ".mp4?alt=media"
-                }
-                className={styles.link}
-                target="_blank"
-                download
-              >
-                <VisibilityIcon />
-              </Link>
-            </td>
-            <td>
-              {verification.status !== 2 ? (
-                <button
-                  className={styles.yes}
-                  onClick={() => verify(verification.trainer_id)}
-                >
-                  Verificar
-                </button>
-              ) : null}
-              <span> </span>
-              {verification.status !== 3 ? (
-                <button
-                  className={styles.no}
-                  onClick={() => reject(verification.trainer_id)}
-                >
-                  Rechazar
-                </button>
-              ) : null}
-            </td>
+  const getTrainerName = (id) =>
+    users.find((user) => user.id === id)?.external_id || "No name";
+
+  return verifications && users && !error ? (
+    verifications.length > 0 ? (
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            <th>Nombre Entrenador</th>
+            <th>Estado</th>
+            <th>Video</th>
+            <th>Acción</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {verifications.map((verification) => (
+            <tr key={verification.id}>
+              <td>{getTrainerName(verification.trainer_id)}</td>
+              <td>{getStatus(verification.status)}</td>
+              <td>
+                <Link
+                  to={
+                    "https://firebasestorage.googleapis.com/v0/b/fiufit-73a11.appspot.com/o/verifications%2Fuser_" +
+                    verification.trainer_id +
+                    ".mp4?alt=media"
+                  }
+                  className={styles.link}
+                  target="_blank"
+                  download
+                >
+                  <VisibilityIcon />
+                </Link>
+              </td>
+              <td>
+                {verification.status !== 2 ? (
+                  <button
+                    className={styles.yes}
+                    onClick={() => verify(verification.trainer_id)}
+                  >
+                    Verificar
+                  </button>
+                ) : null}
+                <span> </span>
+                {verification.status !== 3 ? (
+                  <button
+                    className={styles.no}
+                    onClick={() => reject(verification.trainer_id)}
+                  >
+                    Rechazar
+                  </button>
+                ) : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    ) : (
+      "No hay datos disponibles"
+    )
   ) : error ? (
-    <h2 style={{ color: "red" }}>Servicio desabilitado</h2>
+    <h2 style={{ color: "red" }}>Servicio deshabilitado</h2>
   ) : (
     <Loader />
   );
