@@ -53,7 +53,8 @@ Here an administrator can:
 
 ### Built With
 * [![Javascript][Javascript]][Javascript.com]
-* [![ReactNative][ReactNative]][https://reactnative.dev/]
+* [![React][React]][react.dev]
+* [![Redux][Redux]][redux.js.org]
 * [![ReactRouter][ReactRouter]][reactrouter.com]
 * [![SASS][SASS]][sass-lang.com]
 * [![Firebase][Firebase]][Firebase.com]
@@ -122,12 +123,13 @@ Project Link: [https://github.com/taller-II-2023-q1-g8](https://github.com/talle
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [Firebase]: https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase
 [Firebase.com]: https://firebase.google.com/
-[ReactNative]: https://img.shields.io/badge/react_native-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
-[https://reactnative.dev/]: https://reactnative.dev/
+[React]: https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB
+[react.dev]: https://react.dev/
 [SASS]: https://img.shields.io/badge/SASS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white
 [sass-lang.com]: https://sass-lang.com/
 [ReactRouter]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 [reactrouter.com]: https://reactrouter.com
 [Javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [Javascript.com]: https://developer.mozilla.org/es/docs/Web/JavaScript
-
+[Redux]: https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
+[redux.js.org]: redux.js.org
