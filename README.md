@@ -36,13 +36,14 @@
 
 The Backoffice allows administrators to view and manage the information of the users and services that are used for the Fiut Fit Application.
 Here an administrator can:
-- View detailed information about:
+- Visualize detailed information about:
   - Users.
   - Plans.
   - Administrators.
   - Services.
 - Block and unblock:
   - Users.
+  - Plans.
   - Services.
 - Register another administrator.
 - Observe the verification center.
