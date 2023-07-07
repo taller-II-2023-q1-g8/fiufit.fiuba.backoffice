@@ -54,10 +54,10 @@ Here an administrator can:
 ### Built With
 * [![Javascript][Javascript]][Javascript.com]
 * [![React][React]][react.dev]
-* [![Redux][Redux]][redux.js.org]
 * [![ReactRouter][ReactRouter]][reactrouter.com]
 * [![SASS][SASS]][sass-lang.com]
 * [![Firebase][Firebase]][Firebase.com]
+* [![Render][Render]][render.com]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -131,5 +131,5 @@ Project Link: [https://github.com/taller-II-2023-q1-g8](https://github.com/talle
 [reactrouter.com]: https://reactrouter.com
 [Javascript]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [Javascript.com]: https://developer.mozilla.org/es/docs/Web/JavaScript
-[Redux]: https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white
-[redux.js.org]: redux.js.org
+[Render]: https://img.shields.io/badge/Render-%46E3B7.svg?style=for-the-badge&logo=render&logoColor=white
+[render.com]: https://render.com/
