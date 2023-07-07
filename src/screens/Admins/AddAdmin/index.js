@@ -28,6 +28,7 @@ export default function AddAdmin() {
       password: password,
       weight_in_kg: weight,
       height_in_cm: height,
+      interests: [],
       is_federated: false,
       is_admin: true,
     };
@@ -129,7 +130,7 @@ export default function AddAdmin() {
       key="Fecha"
       label="Fecha de nacimiento"
       onChange={setBirthday}
-      placeholder="Fecha de nacimiento"
+      placeholder="2000-12-31"
       defaultValue={birthday}
     />,
     <TextField
